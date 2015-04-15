@@ -9,25 +9,26 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class MainActivity extends ActionBarActivity {
+public class HomeActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final Button button = (Button) findViewById(R.id.btn_createAccount);
-        button.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_home);
+        final Button btnAccount = (Button) findViewById(R.id.btn_createAccount);
+        btnAccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CreateaccountActivity.class);
+                Intent intent = new Intent(HomeActivity.this, DetailaccountActivity.class);
                 startActivity(intent);
             }
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 

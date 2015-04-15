@@ -16,6 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EditaccountActivity"
+            android:label="@string/title_activity_editaccount" >
+        </activity>
+        <activity
+            android:name=".CreateaccountActivity"
+            android:label="@string/title_activity_createaccount" >
+        </activity>
+        <activity
+            android:name=".DetailaccountActivity"
+            android:label="@string/title_activity_detailaccount" >
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
     </application>
 
 </manifest>
