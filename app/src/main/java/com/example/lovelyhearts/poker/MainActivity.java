@@ -7,13 +7,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    private Spinner spinner;
+    private String[] typesOfUsers;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        typesOfUsers = getResources().getStringArray(R.array.UserRoles);
+        spinner = (Spinner)findViewById(R.id.spUsers);
+
+       ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, typesOfUsers);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+     // spinner.setAdapter(dataAdapter);
+
         setContentView(R.layout.activity_main);
         final Button button = (Button) findViewById(R.id.btn_createAccount);
         button.setOnClickListener(new View.OnClickListener() {

@@ -3,7 +3,6 @@
 
     <string name="app_name">Poker</string>
     <string name="action_settings">Settings</string>
-
     <!--general-->
     <string name="save">save</string>
     <string name="edit">edit</string>
@@ -21,4 +20,10 @@
 
     <string name="hello_world">Hello world!</string>
 
+    <string name="SignIn">SignIn</string>
+    <string name="userlabel">userlabel</string>
+    <string-array name="UserRoles">
+        <item>Admin</item>
+        <item>Customer</item>
+    </string-array>
 </resources>
