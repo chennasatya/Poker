@@ -3,11 +3,12 @@
 
     <string name="app_name">Poker</string>
     <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
     <!--general-->
     <string name="save">save</string>
     <string name="edit">edit</string>
     <string name="delete">delete</string>
-
 
     <!--home-->
     <string name="title_activity_home">Home</string>
@@ -17,13 +18,21 @@
     <string name="title_activity_createaccount">Create Account</string>
     <string name="title_activity_detailaccount">Account Details</string>
 
+    <!--tablayout-->
+    <string name="title_activity_tournament">Tournament</string>
 
-    <string name="hello_world">Hello world!</string>
-
+    <!--sign in-->
     <string name="SignIn">SignIn</string>
     <string name="userlabel">userlabel</string>
     <string-array name="UserRoles">
         <item>Admin</item>
         <item>Customer</item>
     </string-array>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_tournament_location">TournamentLocationActivity</string>
+    <string name="title_activity_tourrnament">TourrnamentActivity</string>
+
 </resources>

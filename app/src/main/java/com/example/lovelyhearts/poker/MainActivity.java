@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
         final Button button = (Button) findViewById(R.id.btn_createAccount);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CreateaccountActivity.class);
+                Intent intent = new Intent(MainActivity.this, TournamentActivity.class);
                 startActivity(intent);
             }
         });

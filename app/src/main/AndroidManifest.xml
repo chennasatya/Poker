@@ -32,6 +32,18 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
+        <activity
+            android:name=".TournamentTime"
+            android:label="@string/title_activity_tournament" >
+        </activity>
+        <activity
+            android:name=".TournamentLocation"
+            android:label="@string/title_activity_tournament_location" >
+        </activity>
+        <activity
+            android:name=".TournamentActivity"
+            android:label="@string/title_activity_tournament" >
+        </activity>
     </application>
 
 </manifest>
