@@ -3,27 +3,37 @@
 
     <string name="app_name">Poker</string>
     <string name="action_settings">Settings</string>
-    <!--general-->
+    <!-- general -->
     <string name="save">save</string>
     <string name="edit">edit</string>
     <string name="delete">delete</string>
 
-
-    <!--home-->
+    <!-- home -->
     <string name="title_activity_home">Home</string>
 
-    <!--account-->
+    <!-- account -->
     <string name="title_activity_editaccount">Edit Account</string>
     <string name="title_activity_createaccount">Create Account</string>
     <string name="title_activity_detailaccount">Account Details</string>
-
-
     <string name="hello_world">Hello world!</string>
-
     <string name="SignIn">SignIn</string>
     <string name="userlabel">userlabel</string>
+    <string name="action_create">Add</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">edit</string>
+    <string name="action_hamburger">settings</string>
+    <string name="action_add_location">AddLocation</string>
+    <string name="action_edit_location">EditLocation</string>
+    <string name="action_save_location">SaveLocation</string>
+    <string name="action_delete_location">DeleteLocation</string>
+
     <string-array name="UserRoles">
         <item>Admin</item>
         <item>Customer</item>
     </string-array>
+
+    <string name="title_activity_location_details">LocationDetails</string>
+    <string name="title_activity_edit_location">EditLocation</string>
+    <string name="title_activity_edit_tournament">EditTournament</string>
+
 </resources>

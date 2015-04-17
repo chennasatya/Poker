@@ -32,6 +32,18 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
+        <activity
+            android:name=".LocationDetails"
+            android:label="@string/title_activity_location_details" >
+        </activity>
+        <activity
+            android:name=".EditLocation"
+            android:label="@string/title_activity_edit_location" >
+        </activity>
+        <activity
+            android:name=".EditTournament"
+            android:label="@string/title_activity_edit_tournament" >
+        </activity>
     </application>
 
 </manifest>
