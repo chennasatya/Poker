@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:text="Create Account"
         android:id="@+id/btn_createAccount"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/tvPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="101dp" />
 
     <TextView
         android:id="@+id/lblSignIn"
