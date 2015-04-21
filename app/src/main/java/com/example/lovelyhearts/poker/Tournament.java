@@ -6,6 +6,16 @@ public class Tournament {
     private String date;
     private String time;
     private String location;
+    private String week;
+
+    public String getWeek() {
+        return week;
+    }
+
+    public void setWeek(String week) {
+        this.week = week;
+    }
+
 
     public String getDate() {
         return date;

@@ -14,4 +14,11 @@
         android:checked="false"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/swi_mine" />
+
 </RelativeLayout>
