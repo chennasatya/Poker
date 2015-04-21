@@ -44,6 +44,10 @@
             android:name=".TournamentActivity"
             android:label="@string/title_activity_tournament" >
         </activity>
+        <activity
+            android:name=".TournamentdetailActivity"
+            android:label="@string/title_activity_tournamentdetail" >
+        </activity>
     </application>
 
 </manifest>

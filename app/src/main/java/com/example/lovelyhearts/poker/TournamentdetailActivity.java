@@ -1,36 +1,24 @@
 package com.example.lovelyhearts.poker;
 
-import android.app.TabActivity;
-import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TabHost;
 
 
-public class TournamentActivity extends TabActivity {
-    private TabHost mTabHost;
+public class TournamentdetailActivity extends ActionBarActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_tournament_tab);
-        mTabHost=getTabHost();
-        TabHost.TabSpec spec;
-        Intent intent;
-        intent= new Intent(this,TournamentTime.class);
-        spec= mTabHost.newTabSpec("Date").setIndicator("Date").setContent(intent);
-        mTabHost.addTab(spec);
-
-        intent= new Intent(this,TournamentLocation.class);
-        spec= mTabHost.newTabSpec("Location").setIndicator("Location").setContent(intent);
-        mTabHost.addTab(spec);
-
-        mTabHost.setCurrentTab(1);
+        setContentView(R.layout.activity_tournamentdetail);
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_tournament, menu);
+        getMenuInflater().inflate(R.menu.menu_tournamentdetail, menu);
         return true;
     }
 
@@ -48,5 +36,4 @@ public class TournamentActivity extends TabActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }

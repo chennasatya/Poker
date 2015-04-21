@@ -9,6 +9,10 @@
     <string name="save">save</string>
     <string name="edit">edit</string>
     <string name="delete">delete</string>
+    <string name="assign">assign table</string>
+    <string name="register">register</string>
+    <string name="unregister">unregister</string>
+    <string name="play">play</string>
 
     <!--home-->
     <string name="title_activity_home">Home</string>
@@ -18,8 +22,11 @@
     <string name="title_activity_createaccount">Create Account</string>
     <string name="title_activity_detailaccount">Account Details</string>
 
-    <!--tablayout-->
+    <!--tournament-->
     <string name="title_activity_tournament">Tournament</string>
+    <string name="title_activity_tournament_location">Tournament Location</string>
+    <string name="title_activity_tournament_time">Tournament Time</string>
+    <string name="title_activity_tournamentdetail">Tournament Detail</string>
 
     <!--sign in-->
     <string name="SignIn">SignIn</string>
@@ -29,10 +36,6 @@
         <item>Customer</item>
     </string-array>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-    <string name="title_activity_tournament_location">TournamentLocationActivity</string>
-    <string name="title_activity_tourrnament">TourrnamentActivity</string>
+
 
 </resources>
