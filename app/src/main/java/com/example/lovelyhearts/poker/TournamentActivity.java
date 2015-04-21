@@ -10,6 +10,7 @@ import android.widget.TabHost;
 
 public class TournamentActivity extends TabActivity {
     private TabHost mTabHost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,15 +18,15 @@ public class TournamentActivity extends TabActivity {
         mTabHost=getTabHost();
         TabHost.TabSpec spec;
         Intent intent;
-        intent= new Intent(this,TournamentTime.class);
+        intent= new Intent(this,TabTournamentTime.class);
         spec= mTabHost.newTabSpec("Date").setIndicator("Date").setContent(intent);
         mTabHost.addTab(spec);
 
-        intent= new Intent(this,TournamentLocation.class);
+        intent= new Intent(this,TabTournamentLocation.class);
         spec= mTabHost.newTabSpec("Location").setIndicator("Location").setContent(intent);
         mTabHost.addTab(spec);
 
-        mTabHost.setCurrentTab(1);
+        mTabHost.setCurrentTab(0);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -41,10 +42,6 @@ public class TournamentActivity extends TabActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

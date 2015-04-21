@@ -33,11 +33,11 @@
             android:label="@string/title_activity_home" >
         </activity>
         <activity
-            android:name=".TournamentTime"
+            android:name=".TabTournamentTime"
             android:label="@string/title_activity_tournament" >
         </activity>
         <activity
-            android:name=".TournamentLocation"
+            android:name=".TabTournamentLocation"
             android:label="@string/title_activity_tournament_location" >
         </activity>
         <activity
