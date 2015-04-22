@@ -30,6 +30,9 @@ public class TournamentActivity extends ActionBarActivity implements TabListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament);
 
+        mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+
         ActionBar actionBar=getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         Tab timeTab= actionBar.newTab();
@@ -43,10 +46,9 @@ public class TournamentActivity extends ActionBarActivity implements TabListener
         actionBar.addTab(timeTab);
         actionBar.addTab(locationTab);
 
-     //   mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
 
-       // mViewPager = (ViewPager) findViewById(R.id.pager);
-        //mViewPager.setAdapter(mPagerAdapter);
+
+        mViewPager.setAdapter(mPagerAdapter);
     }
 
     @Override
@@ -79,6 +81,7 @@ public class TournamentActivity extends ActionBarActivity implements TabListener
 
         @Override
         public Fragment getItem(int i) {
+            i=1;
             Fragment fragment=null;
             if(i==1) {
                 fragment = new TimeFragment();
