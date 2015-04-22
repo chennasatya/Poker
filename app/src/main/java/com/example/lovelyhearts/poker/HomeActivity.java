@@ -16,12 +16,12 @@ public class HomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         final Button btnAccount = (Button) findViewById(R.id.btn_createAccount);
-        btnAccount.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, DetailaccountActivity.class);
-                startActivity(intent);
-            }
-        });
+        //btnAccount.setOnClickListener(new View.OnClickListener() {
+          //  public void onClick(View v) {
+            //    Intent intent = new Intent(HomeActivity.this, DetailaccountActivity.class);
+              //  startActivity(intent);
+           // }
+        //});
     }
 
 

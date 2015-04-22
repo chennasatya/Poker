@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         final EditText username=(EditText)findViewById(R.id.tvUserName);
         final EditText password =(EditText)findViewById(R.id.tvPassword);
         final Button buttonSigin =(Button)findViewById(R.id.btn_SignIn);
@@ -45,7 +46,7 @@ public class MainActivity extends Activity {
             }
 
         });
-        setContentView(R.layout.activity_main);
+
 
     }
 
