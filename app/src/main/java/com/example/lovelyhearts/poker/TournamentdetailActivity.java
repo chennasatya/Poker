@@ -24,42 +24,29 @@ public class TournamentdetailActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournamentdetail);
         //----------data------------
-        List<Tournament> list=new ArrayList<Tournament>();
-        Tournament t1=new Tournament();
-        t1.setDate("4/12");
-        t1.setTime("5pm");
-        t1.setLocation("corner bar");
-        t1.setWeek("friday");
-        list.add(t1);
-        Tournament t2=new Tournament();
-        t2.setDate("4/15");
-        t2.setTime("6pm");
-        t2.setLocation("corner bar");
-        t2.setWeek("Tuesday");
-        list.add(t2);
+        List<User> list=new ArrayList<User>();
+        User u1 = new User();
+        u1.setName("Bob");
+        list.add(u1);
         //-------------set adapter-----------
         ListViewAdapter myAdapter = new ListViewAdapter(this, 0, list);
         setListAdapter(myAdapter);
     }
 
 
-    public class ListViewAdapter extends ArrayAdapter<Tournament> {
-        public ListViewAdapter(Context context, int resource, List<Tournament> objects){
+    public class ListViewAdapter extends ArrayAdapter<User> {
+        public ListViewAdapter(Context context, int resource, List<User> objects){
             super(context,resource,objects);
         }
         public View getView(int position, View convertView, ViewGroup parent){
             LayoutInflater inflater = getLayoutInflater();
             //get tournament entry
-            Tournament tournament=getItem(position);
+            User user=getItem(position);
 
             if(convertView == null){
-                convertView=inflater.inflate(R.layout.row_three_column, parent, false);
+                convertView=inflater.inflate(R.layout.row_one_column, parent, false);
                 TextView column1=(TextView)convertView.findViewById(R.id.column1);
-                TextView column2=(TextView)convertView.findViewById(R.id.column2);
-                TextView column3=(TextView)convertView.findViewById(R.id.column3);
-                column1.setText(tournament.getDate());
-                column2.setText(tournament.getWeek());
-                column3.setText(tournament.getTime());
+                column1.setText(user.getName());
 
                 //   convertView = inflater.inflate(R.layout.row_header, null);
                 //   TextView header=(TextView)convertView.findViewById(R.id.ttl_rowheader);
@@ -73,7 +60,7 @@ public class TournamentdetailActivity extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Tournament tournament = (Tournament)getListAdapter().getItem(position);
+        User user = (User)getListAdapter().getItem(position);
 
     }
 
@@ -90,8 +77,8 @@ public class TournamentdetailActivity extends ListActivity {
 
     }
 
-    public void updateAdapter(List<Tournament> objects) {
-        setListAdapter(new ListViewAdapter(TournamentdetailActivity.this, R.layout.row_three_column, objects));
+    public void updateAdapter(List<User> objects) {
+        setListAdapter(new ListViewAdapter(TournamentdetailActivity.this, R.layout.row_one_column, objects));
     }
 
 
