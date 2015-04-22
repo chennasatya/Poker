@@ -55,11 +55,6 @@ public class MainActivity extends ActionBarActivity {
         //TEST CODE
         //Log.i("GetDatabaseTask", Database.getInstance().toString());
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 }

@@ -1,0 +1,44 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.lovelyhearts.poker.TournamentdetailActivity">
+
+    <!--for admin-->
+    <item
+        android:id="@+id/action_edit"
+        android:title="@string/edit"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_delete"
+        android:title="@string/delete"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_assigntable"
+        android:title="@string/assign"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <!--for unregistered user-->
+    <item
+        android:id="@+id/action_register"
+        android:title="@string/register"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <!--for registered user-->
+    <item
+        android:id="@+id/action_play"
+        android:title="@string/play"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_unregister"
+        android:title="@string/unregister"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+</menu>
