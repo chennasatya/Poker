@@ -1,6 +1,6 @@
 package com.example.lovelyhearts.poker;
 
-/*import android.content.Context;
+import android.content.Context;
 import android.content.Intent;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
@@ -12,7 +12,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 
-import java.io.InputStreamReader;*/
+import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,12 +27,13 @@ public class Database {
     }
 
     private static MainActivity activity;
-    private static Boolean isPopulated = Boolean.FALSE;
+    //private static Boolean isPopulated = Boolean.FALSE;
 
     private static List<User> users;
     private static List<Location> locations;
 
     private Database() {
+        new GetDatabaseTask().execute();
     }
 
     public static List<User> getUsers() {
@@ -42,25 +43,67 @@ public class Database {
     public static List<Location> getLocations() {
         return locations;
     }
+
+    //This provides the basic functionality for retrieving all current contacts
+    //from web service.
+    private class GetDatabaseTask extends AsyncTask<Void, Void, ServiceResult> {
+        private String URL_BASE = "https://api.myjson.com/bins/3mk2l";//activity.getString(R.string.URL_BASE);
+        private ServiceResult result;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected ServiceResult doInBackground(Void... params) {
+            try {
+                AndroidHttpClient client = AndroidHttpClient.newInstance("Android", null);
+                HttpUriRequest request = new HttpGet(URL_BASE);
+                HttpResponse response = client.execute(request);
+                Gson gson = new Gson();
+                result = gson.fromJson(
+                        new InputStreamReader(response.getEntity().getContent()),
+                        ServiceResult.class);
+                client.close();
+                return result;
+            }
+            catch (Exception ex) {
+                Log.w("GetDatabaseTask", "Error getting database info", ex);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(ServiceResult result) {
+            super.onPostExecute(result);
+
+            String test = result.toString();
+            Log.w("onPostExecute","GSON Result: " + test);
+
+            //contacts = result.getContacts();
+            //activity.updateAdapter(contacts);
+
+        }
+    }
 }
 /*
 package edu.umn.contactview;
 
-        import android.content.Context;
-        import android.content.Intent;
-        import android.net.http.AndroidHttpClient;
-        import android.os.AsyncTask;
-        import android.util.Log;
+import android.content.Context;
+import android.content.Intent;
+import android.net.http.AndroidHttpClient;
+import android.os.AsyncTask;
+import android.util.Log;
 
-        import com.google.gson.Gson;
+import com.google.gson.Gson;
 
-        import org.apache.http.HttpResponse;
-        import org.apache.http.client.methods.HttpGet;
-        import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
 
-        import java.io.InputStreamReader;
-        import java.util.Iterator;
-        import java.util.List;
+import java.io.InputStreamReader;
+import java.util.Iterator;
+import java.util.List;
 
 public class ContactManager {
     private static ContactManager ourInstance;
@@ -215,4 +258,5 @@ public class ContactManager {
     {
         // Update the JSON data
     }
-}*/
+}
+*/

@@ -3,6 +3,7 @@ package com.example.lovelyhearts.poker;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,6 +51,9 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        //TEST CODE
+        //Log.i("GetDatabaseTask", Database.getInstance().toString());
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
