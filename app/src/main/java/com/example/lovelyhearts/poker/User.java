@@ -17,6 +17,9 @@ public class User {
     private String zip;
     private String phone;
 
+    public User(){
+
+    }
     public User(Integer id, String login, String password, boolean isAdmin, String name, String email,
                 String address1, String address2, String city, String state, String zip, String phone)
     {

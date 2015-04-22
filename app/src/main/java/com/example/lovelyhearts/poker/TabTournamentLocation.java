@@ -34,7 +34,7 @@ public class TabTournamentLocation extends ListActivity {
         Tournament t2=new Tournament();
         t2.setDate("4/15");
         t2.setTime("6pm");
-        t2.setLocation("corner bar");
+        t2.setLocation("CrabShack");
         list.add(t2);
         //-------------set adapter-----------
         ListViewAdapter myAdapter = new ListViewAdapter(this, 0, list);

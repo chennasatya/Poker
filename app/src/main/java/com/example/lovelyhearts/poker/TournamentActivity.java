@@ -1,49 +1,100 @@
 package com.example.lovelyhearts.poker;
 
-import android.app.TabActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar.Tab;
+import android.support.v7.app.ActionBar.TabListener;
+import android.support.v4.app.FragmentTransaction;
+import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TabHost;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
+public class TournamentActivity extends ActionBarActivity implements TabListener{
+    PagerAdapter mPagerAdapter;
+    ViewPager mViewPager;
 
-public class TournamentActivity extends TabActivity {
-    private TabHost mTabHost;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_tournament_tab);
-        mTabHost=getTabHost();
-        TabHost.TabSpec spec;
-        Intent intent;
-        intent= new Intent(this,TabTournamentTime.class);
-        spec= mTabHost.newTabSpec("Date").setIndicator("Date").setContent(intent);
-        mTabHost.addTab(spec);
+        setContentView(R.layout.activity_tournament);
 
-        intent= new Intent(this,TabTournamentLocation.class);
-        spec= mTabHost.newTabSpec("Location").setIndicator("Location").setContent(intent);
-        mTabHost.addTab(spec);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        Tab timeTab= actionBar.newTab();
+        timeTab.setTabListener(this);
+        timeTab.setText("Time/Date");
 
-        mTabHost.setCurrentTab(0);
+        Tab locationTab= actionBar.newTab();
+        locationTab.setTabListener(this);
+        locationTab.setText("Location");
+
+        actionBar.addTab(timeTab);
+        actionBar.addTab(locationTab);
+
+     //   mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
+
+       // mViewPager = (ViewPager) findViewById(R.id.pager);
+        //mViewPager.setAdapter(mPagerAdapter);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_tournament, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
 
-
-        return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onTabUnselected(Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabReselected(Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+
+    public static class PagerAdapter extends FragmentStatePagerAdapter {
+
+        public PagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            Fragment fragment=null;
+            if(i==1) {
+                fragment = new TimeFragment();
+            }
+            else if(i==2){
+                fragment = new LocationFragment();
+            }
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            // For this contrived example, we have a 100-object collection.
+            return 2;
+        }
+
+    }
 }
+

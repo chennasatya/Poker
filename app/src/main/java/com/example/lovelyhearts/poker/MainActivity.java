@@ -1,5 +1,6 @@
 package com.example.lovelyhearts.poker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     private Spinner spinner;
     private String[] typesOfUsers;
