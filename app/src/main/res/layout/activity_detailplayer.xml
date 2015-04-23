@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.lovelyhearts.poker.DetailplayerActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_username" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:id="@+id/detailplayer_username"
+        android:editable="false"
+        android:enabled="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/detailplayer_wins" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wins:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_wins"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/detailplayer_username"
+        />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/detailplayer_wins"
+        android:enabled="true"
+        android:editable="false"
+        android:layout_alignBottom="@+id/lbl_wins"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Losses:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_losses"
+        android:layout_below="@+id/lbl_wins"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailplayer_losses"
+        android:editable="false"
+        android:enabled="true"
+        android:layout_alignBottom="@+id/lbl_losses"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/detailplayer_percentage" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/detailplayer_percentage"
+        android:editable="false"
+        android:enabled="true"
+        android:textStyle="bold"
+        android:layout_above="@+id/lbl_rank"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailplayer_rank"
+        android:ems="10"
+        android:editable="false"
+        android:enabled="true"
+        android:layout_alignBottom="@+id/lbl_rank"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rank:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_rank"
+        android:layout_below="@+id/lbl_percentage"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Percentage:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_percentage"
+        android:layout_below="@+id/lbl_losses"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+</RelativeLayout>

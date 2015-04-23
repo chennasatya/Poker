@@ -68,6 +68,14 @@
             android:name=".RankingsActivity"
             android:label="@string/title_activity_rankings" >
         </activity>
+        <activity
+            android:name=".DetailplayerActivity"
+            android:label="@string/title_activity_detailplayer" >
+        </activity>
+        <activity
+            android:name=".EditplayerActivity"
+            android:label="@string/title_activity_editplayer" >
+        </activity>
     </application>
 
 </manifest>

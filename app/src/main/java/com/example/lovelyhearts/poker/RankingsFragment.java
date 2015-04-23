@@ -58,6 +58,8 @@ public class RankingsFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        Intent intent = new Intent(getActivity(),DetailplayerActivity.class);
+        startActivity(intent);
     }
     //---------------inner class--------------------------------------------
     public class ListViewAdapter extends ArrayAdapter<Player> {

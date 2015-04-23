@@ -24,7 +24,7 @@
 
     <!--tournament-->
     <string name="title_activity_tournament">Tournament</string>
-    <string name="title_activity_tournamentdetail">Tournament Detail</string>
+    <string name="title_activity_tournamentdetail">Tournament Details</string>
 
     <!--location-->
     <string name="title_activity_location">Location</string>
@@ -37,6 +37,10 @@
 
     <!--rankings-->
     <string name="title_activity_rankings">Rankings</string>
+
+    <!--player-->
+    <string name="title_activity_detailplayer">Player Details</string>
+    <string name="title_activity_editplayer">Edit Player</string>
 
     <!--sign in-->
     <string name="SignIn">SignIn</string>
