@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 
@@ -21,22 +22,32 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        typesOfUsers = getResources().getStringArray(R.array.UserRoles);
-        spinner = (Spinner)findViewById(R.id.spUsers);
-
-       ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, typesOfUsers);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-     // spinner.setAdapter(dataAdapter);
-
         setContentView(R.layout.activity_main);
-        final Button button = (Button) findViewById(R.id.btn_createAccount);
-        button.setOnClickListener(new View.OnClickListener() {
+        final EditText username=(EditText)findViewById(R.id.tvUserName);
+        final EditText password =(EditText)findViewById(R.id.tvPassword);
+        final Button buttonSigin =(Button)findViewById(R.id.btn_SignIn);
+        final Button buttonCreateAccount = (Button) findViewById(R.id.btn_createAccount);
+        buttonSigin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TournamentActivity.class);
-                startActivity(intent);
+                String uservalue= username.getText().toString();
+                String pwdValue = password.getText().toString();
+                if(uservalue.equals("user") && pwdValue.equals("poker") ) {
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }
             }
         });
+
+        buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, CreateaccountActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+
     }
 
     @Override
