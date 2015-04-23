@@ -2,14 +2,11 @@ package com.example.lovelyhearts.poker;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -37,7 +34,6 @@ public class MainActivity extends Activity {
                 }
             }
         });
-
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -48,13 +44,11 @@ public class MainActivity extends Activity {
         });
 
 
-
-
-        //----------------------tournament button-----------------
-        Button buttonTournament = (Button) findViewById(R.id.btn_tournament);
-        buttonTournament.setOnClickListener(new View.OnClickListener() {
+        //----------------------home button (for test)-----------------
+        Button buttonHome = (Button) findViewById(R.id.btn_home);
+        buttonHome.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TournamentActivity.class);
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
 

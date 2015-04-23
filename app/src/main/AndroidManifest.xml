@@ -56,6 +56,18 @@
             android:name=".LocationActivity"
             android:label="@string/title_activity_location" >
         </activity>
+        <activity
+            android:name=".PlayActivity"
+            android:label="@string/title_activity_play" >
+        </activity>
+        <activity
+            android:name=".TableActivity"
+            android:label="@string/title_activity_table" >
+        </activity>
+        <activity
+            android:name=".RankingsActivity"
+            android:label="@string/title_activity_rankings" >
+        </activity>
     </application>
 
 </manifest>

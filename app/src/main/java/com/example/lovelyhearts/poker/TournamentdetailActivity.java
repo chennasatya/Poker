@@ -2,6 +2,7 @@ package com.example.lovelyhearts.poker;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -38,6 +39,26 @@ public class TournamentdetailActivity extends ActionBarActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        Intent intent=null;
+        switch(id){
+            //player
+            case R.id.action_play:
+                intent = new Intent(this,PlayActivity.class);
+                startActivity(intent);
+                return true;
+            //admin
+            case R.id.action_assigntable:
+                intent = new Intent(this,TableActivity.class);
+                startActivity(intent);
+                return true;
 
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

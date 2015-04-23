@@ -15,13 +15,35 @@ public class HomeActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        final Button btnAccount = (Button) findViewById(R.id.btn_createAccount);
-        //btnAccount.setOnClickListener(new View.OnClickListener() {
-          //  public void onClick(View v) {
-            //    Intent intent = new Intent(HomeActivity.this, DetailaccountActivity.class);
-              //  startActivity(intent);
-           // }
-        //});
+
+        Button buttonAccount = (Button) findViewById(R.id.btn_account);
+        buttonAccount.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, DetailaccountActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+        Button buttonTournament = (Button) findViewById(R.id.btn_home);
+        buttonTournament.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, TournamentActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+        Button buttonRankings = (Button) findViewById(R.id.btn_rankings);
+        buttonRankings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, RankingsActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+
     }
 
 
@@ -34,9 +56,6 @@ public class HomeActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);

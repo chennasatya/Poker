@@ -1,0 +1,15 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lovelyhearts.poker.Round2Fragment">
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="363dp"
+        android:choiceMode="singleChoice"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        />
+
+</FrameLayout>
