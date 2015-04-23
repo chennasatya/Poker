@@ -53,4 +53,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tournament (for test use)"
+        android:id="@+id/btn_tournament"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/btn_SignIn" />
+
 </RelativeLayout>

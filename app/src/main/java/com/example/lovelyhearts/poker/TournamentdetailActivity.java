@@ -30,10 +30,6 @@ public class TournamentdetailActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournamentdetail);
 
-      //  Fragment registeredplayers= new RegisteredplayersFragment();
-       // FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
-        //ft.replace(R.id.list_registedplay, registeredplayers).commit();
-
     }
 
     @Override

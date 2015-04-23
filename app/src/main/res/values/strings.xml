@@ -26,6 +26,9 @@
     <string name="title_activity_tournament">Tournament</string>
     <string name="title_activity_tournamentdetail">Tournament Detail</string>
 
+    <!--location-->
+    <string name="title_activity_location">Location</string>
+
     <!--sign in-->
     <string name="SignIn">SignIn</string>
     <string name="userlabel">userlabel</string>
@@ -40,5 +43,6 @@
 
 
     <string name="URL_BASE">https://api.myjson.com/bins/3mk2l/</string>
+
 
 </resources>

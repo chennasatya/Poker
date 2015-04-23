@@ -48,6 +48,17 @@ public class MainActivity extends Activity {
         });
 
 
+
+
+        //----------------------tournament button-----------------
+        Button buttonTournament = (Button) findViewById(R.id.btn_tournament);
+        buttonTournament.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TournamentActivity.class);
+                startActivity(intent);
+            }
+
+        });
     }
 
     @Override
