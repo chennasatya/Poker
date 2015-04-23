@@ -18,7 +18,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -43,14 +43,6 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" >
-        </activity>
-        <activity
-            android:name=".TabTournamentTime"
-            android:label="@string/title_activity_tournament" >
-        </activity>
-        <activity
-            android:name=".TabTournamentLocation"
-            android:label="@string/title_activity_tournament_location" >
         </activity>
         <activity
             android:name=".TournamentdetailActivity"

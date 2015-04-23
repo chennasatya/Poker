@@ -1,5 +1,9 @@
 package com.example.lovelyhearts.poker;
 
+/**
+ * Created by ryan on 4/21/15.
+ */
+
 import java.util.Date;
 
 public class Tournament {
@@ -41,5 +45,4 @@ public class Tournament {
     public void setLocation(String location) {
         this.location = location;
     }
-
 }

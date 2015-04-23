@@ -24,8 +24,6 @@
 
     <!--tournament-->
     <string name="title_activity_tournament">Tournament</string>
-    <string name="title_activity_tournament_location">Tournament Location</string>
-    <string name="title_activity_tournament_time">Tournament Time</string>
     <string name="title_activity_tournamentdetail">Tournament Detail</string>
 
     <!--sign in-->
@@ -40,5 +38,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+
+    <string name="URL_BASE">https://api.myjson.com/bins/3mk2l/</string>
 
 </resources>

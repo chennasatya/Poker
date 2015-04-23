@@ -1,11 +1,24 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lovelyhearts.poker.TimeFragment">
+    tools:context="com.example.lovelyhearts.poker.TimeFragment"
+    android:orientation="horizontal">
 
-    <TextView android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is a time tab"
-        android:id="@+id/frag_time" />
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="363dp"
+        android:choiceMode="singleChoice"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/swi_mine" />
 
-</FrameLayout>
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Only Mine"
+        android:id="@+id/swi_mine"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

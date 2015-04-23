@@ -4,37 +4,53 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBar.TabListener;
 import android.support.v4.app.FragmentTransaction;
-import android.app.Notification;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
+
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+
 
 public class TournamentActivity extends ActionBarActivity implements TabListener{
-    PagerAdapter mPagerAdapter;
-    ViewPager mViewPager;
-
+    PagerAdapter pagerAdapter;
+    ViewPager viewPager;
+    ActionBar actionBar;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament);
 
-        mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-
-        ActionBar actionBar=getSupportActionBar();
+        actionBar=getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                actionBar.setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                if(state == ViewPager.SCROLL_STATE_IDLE){
+
+                }
+                if(state == ViewPager.SCROLL_STATE_DRAGGING){
+
+                }
+                if(state == ViewPager.SCROLL_STATE_SETTLING){
+
+                }
+            }
+        });
+
+
         Tab timeTab= actionBar.newTab();
         timeTab.setTabListener(this);
         timeTab.setText("Time/Date");
@@ -46,9 +62,7 @@ public class TournamentActivity extends ActionBarActivity implements TabListener
         actionBar.addTab(timeTab);
         actionBar.addTab(locationTab);
 
-
-
-        mViewPager.setAdapter(mPagerAdapter);
+        viewPager.setAdapter(pagerAdapter);
     }
 
     @Override
@@ -59,7 +73,7 @@ public class TournamentActivity extends ActionBarActivity implements TabListener
 
     @Override
     public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
-
+        viewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -81,12 +95,12 @@ public class TournamentActivity extends ActionBarActivity implements TabListener
 
         @Override
         public Fragment getItem(int i) {
-            i=1;
+
             Fragment fragment=null;
-            if(i==1) {
+            if(i==0) {
                 fragment = new TimeFragment();
             }
-            else if(i==2){
+            else if(i==1){
                 fragment = new LocationFragment();
             }
             return fragment;
@@ -94,10 +108,8 @@ public class TournamentActivity extends ActionBarActivity implements TabListener
 
         @Override
         public int getCount() {
-            // For this contrived example, we have a 100-object collection.
             return 2;
         }
-
     }
 }
 
