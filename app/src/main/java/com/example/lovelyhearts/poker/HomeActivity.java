@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-
 public class HomeActivity extends ActionBarActivity {
 
     @Override
@@ -42,7 +41,6 @@ public class HomeActivity extends ActionBarActivity {
             }
 
         });
-
 
     }
 
