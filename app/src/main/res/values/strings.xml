@@ -5,7 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 
-    <!--general-->
+    <!-- general -->
     <string name="save">save</string>
     <string name="edit">edit</string>
     <string name="delete">delete</string>
@@ -13,53 +13,49 @@
     <string name="register">register</string>
     <string name="unregister">unregister</string>
     <string name="play">play</string>
-
-    <!--home-->
+    <string name="action_delete"></string>
+    <!-- home -->
     <string name="title_activity_home">Home</string>
 
-    <!--account-->
+    <!-- account -->
     <string name="title_activity_editaccount">Edit Account</string>
     <string name="title_activity_createaccount">Create Account</string>
     <string name="title_activity_detailaccount">Account Details</string>
 
-    <!--tournament-->
+    <!-- tournament -->
     <string name="title_activity_tournament">Tournament</string>
     <string name="title_activity_tournamentdetail">Tournament Details</string>
     <string name="title_activity_edittournament">Tournament Edit</string>
 
-    <!--location-->
+    <!-- location -->
     <string name="title_activity_location">Location</string>
 
-    <!--play-->
+    <!-- play -->
     <string name="title_activity_play">Play</string>
 
-    <!--tables-->
+    <!-- tables -->
     <string name="title_activity_table">Table</string>
 
-    <!--rankings-->
+    <!-- rankings -->
     <string name="title_activity_rankings">Rankings</string>
 
-    <!--player-->
+    <!-- player -->
     <string name="title_activity_detailplayer">Player Details</string>
     <string name="title_activity_editplayer">Edit Player</string>
 
-    <!--sign in-->
+    <!-- sign in -->
     <string name="SignIn">SignIn</string>
     <string name="userlabel">userlabel</string>
+
     <string-array name="UserRoles">
         <item>Admin</item>
         <item>Customer</item>
     </string-array>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
-
     <string name="URL_BASE">https://api.myjson.com/bins/3mk2l/</string>
-
-
-
-
+    <string name="title_activity_edit_tournament">EditTournament</string>
+    <string name="title_activity_edit_location">EditLocation</string>
 
 </resources>

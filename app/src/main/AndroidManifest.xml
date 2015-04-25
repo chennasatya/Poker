@@ -80,6 +80,14 @@
             android:name=".EdittournamentActivity"
             android:label="@string/title_activity_edittournament" >
         </activity>
+        <activity
+            android:name=".EditTournament"
+            android:label="@string/title_activity_edit_tournament" >
+        </activity>
+        <activity
+            android:name=".EditLocation"
+            android:label="@string/title_activity_edit_location" >
+        </activity>
     </application>
 
 </manifest>
