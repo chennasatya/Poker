@@ -25,6 +25,7 @@
     <!--tournament-->
     <string name="title_activity_tournament">Tournament</string>
     <string name="title_activity_tournamentdetail">Tournament Details</string>
+    <string name="title_activity_edittournament">Tournament Edit</string>
 
     <!--location-->
     <string name="title_activity_location">Location</string>
@@ -56,7 +57,7 @@
 
 
     <string name="URL_BASE">https://api.myjson.com/bins/3mk2l/</string>
-    <string name="title_activity_edittournament">Tournament Edit</string>
+
 
 
 

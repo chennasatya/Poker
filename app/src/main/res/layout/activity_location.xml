@@ -10,6 +10,19 @@
         android:id="@+id/list_certainlocation"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        class="com.example.lovelyhearts.poker.CertainlocationFragment" />
+        class="com.example.lovelyhearts.poker.CertainlocationFragment"
+        android:layout_below="@+id/title_certainlocation" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Certain Location"
+        android:id="@+id/title_certainlocation"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/list_certainlocation"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
 
 </RelativeLayout>
