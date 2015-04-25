@@ -2,26 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/column1"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dip"
         android:clickable="false"
         android:gravity="center"
         android:paddingBottom="1dip"
         android:paddingTop="1dip"
         android:text="sample"
-        android:textColor="#ff7f1d"
         android:textSize="17dip"
-        android:textStyle="bold" />
+        android:layout_weight="0.23" />
 
     <TextView
         android:id="@+id/column2"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="5dip"
         android:clickable="false"
         android:gravity="center"
@@ -29,6 +29,7 @@
         android:paddingTop="1dip"
         android:text="sample"
         android:textColor="#6d6d6d"
-        android:textSize="17dip" />
+        android:textSize="17dip"
+        android:layout_weight="0.46" />
 
 </LinearLayout>

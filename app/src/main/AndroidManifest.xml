@@ -76,6 +76,10 @@
             android:name=".EditplayerActivity"
             android:label="@string/title_activity_editplayer" >
         </activity>
+        <activity
+            android:name=".EdittournamentActivity"
+            android:label="@string/title_activity_edittournament" >
+        </activity>
     </application>
 
 </manifest>
