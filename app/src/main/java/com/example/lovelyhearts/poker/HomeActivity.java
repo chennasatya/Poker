@@ -8,6 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.ParseACL;
+import com.parse.ParseException;
+import com.parse.SaveCallback;
+
 public class HomeActivity extends ActionBarActivity {
 
     @Override
@@ -21,7 +25,6 @@ public class HomeActivity extends ActionBarActivity {
                 Intent intent = new Intent(HomeActivity.this, DetailaccountActivity.class);
                 startActivity(intent);
             }
-
         });
 
         Button buttonTournament = (Button) findViewById(R.id.btn_home);
@@ -39,11 +42,9 @@ public class HomeActivity extends ActionBarActivity {
                 Intent intent = new Intent(HomeActivity.this, RankingsActivity.class);
                 startActivity(intent);
             }
-
         });
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

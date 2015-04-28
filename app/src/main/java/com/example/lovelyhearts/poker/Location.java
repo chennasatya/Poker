@@ -1,9 +1,14 @@
 package com.example.lovelyhearts.poker;
 
+import com.parse.ParseObject;
+import com.parse.ParseClassName;
+import com.parse.ParseQuery;
+
 /**
  * Created by ryan on 4/20/15.
  */
-public class Location {
+@ParseClassName("Locations")
+public class Location extends ParseObject{
     private Integer id;
     private String name;
     private String email;

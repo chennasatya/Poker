@@ -11,6 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseCrashReporting;
+import com.parse.ParseUser;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -54,6 +59,24 @@ public class MainActivity extends ActionBarActivity {
             }
 
         });
+
+        // Initialize Crash Reporting.
+        ParseCrashReporting.enable(this);
+
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(this);
+
+        // Add your initialization code here
+        Parse.initialize(this, "CMGQQp6k1D8jVqr39taB6iEVwLSV39VNJq6SmEJe", "uSZcKaAIdtdQ8xxbiTMmRZTDiXiwT5FnSiOT6bLt");
+
+
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        // Optionally enable public read access.
+        // defaultACL.setPublicReadAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
+
+        //DatabaseHelper.getInstance().TestDb();
     }
 
     @Override

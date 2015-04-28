@@ -1,41 +1,50 @@
 package com.example.lovelyhearts.poker;
 
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.http.AndroidHttpClient;
-import android.os.AsyncTask;
-import android.util.Log;
+import android.widget.Toast;
 
-import com.google.gson.Gson;
+import com.parse.ParseACL;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseAnalytics;
+import com.parse.ParseClassName;
+import com.parse.ParseGeoPoint;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-
-import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by ryan on 4/20/15.
  */
-public class Database {
-    private static Database ourInstance = new Database();
+public class DatabaseHelper {
+    private static DatabaseHelper ourInstance = new DatabaseHelper();
 
-    public static Database getInstance() {
+    public static DatabaseHelper getInstance() {
         return ourInstance;
     }
-
-    private static MainActivity activity;
-    //private static Boolean isPopulated = Boolean.FALSE;
 
     private static List<User> users;
     private static List<Location> locations;
 
-    private Database() {
-        new GetDatabaseTask().execute();
+    public DatabaseHelper() {
+
+        //new GetDatabaseTask().execute();
+
+        //ParseObject testObject = new ParseObject("TestObject");
+        //testObject.put("foo", "bar");
+        //testObject.saveInBackground();
+
     }
 
+    public void TestDb()
+    {
+        AddLocation();
+    }
     public static List<User> getUsers() {
         return users;
     }
@@ -44,49 +53,38 @@ public class Database {
         return locations;
     }
 
-    //This provides the basic functionality for retrieving all current contacts
-    //from web service.
-    private class GetDatabaseTask extends AsyncTask<Void, Void, ServiceResult> {
-        private String URL_BASE = "https://api.myjson.com/bins/3mk2l";//activity.getString(R.string.URL_BASE);
-        private ServiceResult result;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
+    private void AddLocation () {
 
-        @Override
-        protected ServiceResult doInBackground(Void... params) {
-            try {
-                AndroidHttpClient client = AndroidHttpClient.newInstance("Android", null);
-                HttpUriRequest request = new HttpGet(URL_BASE);
-                HttpResponse response = client.execute(request);
-                Gson gson = new Gson();
-                result = gson.fromJson(
-                        new InputStreamReader(response.getEntity().getContent()),
-                        ServiceResult.class);
-                client.close();
-                return result;
+
+        // Set up a progress dialog
+        //final ProgressDialog dialog = new ProgressDialog(PostActivity.this);
+        //dialog.setMessage("Updating location");
+        //dialog.show();
+
+        // Create a post.
+        Location mLocation = new Location(1,"Corner Bar", "contact.email.com", "1234 1st Street", "",
+                "Minneapolis", "MN", "55441", "612-123-4567", "www.cornerbar.com");
+
+        ParseACL acl = new ParseACL();
+
+        // Give public read access
+        acl.setPublicReadAccess(true);
+        mLocation.setACL(acl);
+
+        // Save the post
+        mLocation.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+
             }
-            catch (Exception ex) {
-                Log.w("GetDatabaseTask", "Error getting database info", ex);
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(ServiceResult result) {
-            super.onPostExecute(result);
-
-            String test = result.toString();
-            Log.w("onPostExecute","GSON Result: " + test);
-
-            //contacts = result.getContacts();
-            //activity.updateAdapter(contacts);
-
-        }
+        });
     }
+
+
 }
-/*
+
+
+/*  // TAKEN FROM CONTACT VIEWER
 package edu.umn.contactview;
 
 import android.content.Context;
