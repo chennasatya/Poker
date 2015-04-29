@@ -62,8 +62,17 @@ public class DatabaseHelper {
         //dialog.show();
 
         // Create a post.
-        Location mLocation = new Location(1,"Corner Bar", "contact.email.com", "1234 1st Street", "",
-                "Minneapolis", "MN", "55441", "612-123-4567", "www.cornerbar.com");
+        Location mLocation = new Location();
+        mLocation.SetId(1);
+        mLocation.SetName("Corner Bar");
+        mLocation.SetEmail("contact.email.com");
+        mLocation.SetAddress1("1234 1st Street");
+        mLocation.SetAddress2("");
+        mLocation.SetCity("Minneapolis");
+        mLocation.SetState("MN");
+        mLocation.SetZip("55441");
+        mLocation.SetPhone("612-123-4567");
+        mLocation.SetUrl("www.cornerbar.com");
 
         ParseACL acl = new ParseACL();
 

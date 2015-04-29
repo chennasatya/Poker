@@ -1,12 +1,19 @@
 package com.example.lovelyhearts.poker;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+
 /**
  * Created by ryan on 4/21/15.
  */
-public class Player {
+public class Player extends ParseObject{
     private String playerId;
     private String playerName;
     private String overallRank;
+
+    public void Player(){
+        //Default constructor
+    }
 
     public String getPlayerName() {
         return playerName;

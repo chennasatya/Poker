@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,10 @@ import android.widget.Spinner;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseCrashReporting;
+import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -60,6 +64,9 @@ public class MainActivity extends ActionBarActivity {
 
         });
 
+        /* RTT this keeps crashing and I can't get it to work ARRRRRRGGGGGHHHH
+        ParseObject.registerSubclass(Location.class);
+
         // Initialize Crash Reporting.
         ParseCrashReporting.enable(this);
 
@@ -69,7 +76,6 @@ public class MainActivity extends ActionBarActivity {
         // Add your initialization code here
         Parse.initialize(this, "CMGQQp6k1D8jVqr39taB6iEVwLSV39VNJq6SmEJe", "uSZcKaAIdtdQ8xxbiTMmRZTDiXiwT5FnSiOT6bLt");
 
-
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         // Optionally enable public read access.
@@ -77,6 +83,32 @@ public class MainActivity extends ActionBarActivity {
         ParseACL.setDefaultACL(defaultACL, true);
 
         //DatabaseHelper.getInstance().TestDb();
+        // Create a post.
+        Location mLocation = new Location();
+        mLocation.SetId(1);
+        mLocation.SetName("Corner Bar");
+        mLocation.SetEmail("contact.email.com");
+        mLocation.SetAddress1("1234 1st Street");
+        mLocation.SetAddress2("");
+        mLocation.SetCity("Minneapolis");
+        mLocation.SetState("MN");
+        mLocation.SetZip("55441");
+        mLocation.SetPhone("612-123-4567");
+        mLocation.SetUrl("www.cornerbar.com");
+
+        // Give public read access
+        defaultACL.setPublicReadAccess(true);
+        mLocation.setACL(defaultACL);
+
+
+
+        // Save the post
+        mLocation.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                Log.w("tag","Saved Location entry");
+            }
+        });*/
     }
 
     @Override
