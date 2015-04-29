@@ -19,7 +19,7 @@ public class Location extends ParseObject{
     private String phone;
     private String url;
 
-    public Location()
+    public void Location()
     {
         this.id = 0;
         this.name = "";

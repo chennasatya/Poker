@@ -1,10 +1,12 @@
 package com.example.lovelyhearts.poker;
 
+import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
 /**
  * Created by ryan on 4/21/15.
  */
+@ParseClassName("TournamentTable")
 public class TournamentTable extends ParseObject {
 
     private int TournamentId;   // Foreign key to the Tournament object
@@ -13,33 +15,33 @@ public class TournamentTable extends ParseObject {
     private boolean TableActive;   // Flag specifying that this table is active in the tournament
 
 
-    public TournamentTable(){
+    public void TournamentTable(){
         //Default Constructor
     }
-    void SetTableId(int id)
+    public void SetTableId(int id)
     {
         this.TableId = id;
     }
-    int GetTableId()
+    public int GetTableId()
     {
         return this.TableId;
     }
-    void SetTournamentId(int id){
+    public void SetTournamentId(int id){
         this.TournamentId = id;
     }
-    int GetTournamentId(){
+    public int GetTournamentId(){
         return this.TournamentId;
     }
-    void SetNumberOfSeats(int seats){
+    public void SetNumberOfSeats(int seats){
         this.NumberOfSeats = seats;
     }
-    int GetNumberOfSeats(){
+    public int GetNumberOfSeats(){
         return this.NumberOfSeats;
     }
-    void SetTableActive(boolean active){
+    public void SetTableActive(boolean active){
         this.TableActive = active;
     }
-    boolean GetTableActive(){
+    public boolean GetTableActive(){
         return this.TableActive;
     }
 }

@@ -1,17 +1,19 @@
 package com.example.lovelyhearts.poker;
 
+import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
 /**
  * Created by ryan on 4/21/15.
  */
+@ParseClassName("Table")
 public class Table extends ParseObject {
     //--------for testing use---------
     int tableId;
     int seatNumber;
     String userName;
 
-    public Table(){
+    public void Table(){
         //Default Constructor
     }
 

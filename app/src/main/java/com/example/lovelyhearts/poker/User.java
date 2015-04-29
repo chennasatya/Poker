@@ -1,10 +1,12 @@
 package com.example.lovelyhearts.poker;
 
+import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
 /**
  * Created by ryan on 4/20/15.
  */
+@ParseClassName("User")
 public class User extends ParseObject {
     private Integer id;
     private String login;
@@ -19,7 +21,7 @@ public class User extends ParseObject {
     private String zip;
     private String phone;
 
-    public User(){
+    public void User(){
         //Default Constructor
     }
     public User(Integer id, String login, String password, boolean isAdmin, String name, String email,

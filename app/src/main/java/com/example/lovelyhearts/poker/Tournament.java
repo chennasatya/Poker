@@ -4,17 +4,19 @@ package com.example.lovelyhearts.poker;
  * Created by ryan on 4/21/15.
  */
 
+import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
 import java.util.Date;
 
+@ParseClassName("Tournament")
 public class Tournament extends ParseObject {
     private String date;
     private String time;
     private String location;
     private String week;
 
-    public Tournament(){
+    public void Tournament(){
         //Default Constructor
     }
 
