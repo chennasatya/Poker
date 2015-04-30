@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.lovelyhearts.poker.LocationDetails">
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_AddLocation"
+        android:title="@string/AddLocation"
+        android:orderInCategory="100"
+        android:icon="@drawable/add"
+        android:showAsAction="always"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_AddLocation"
+        android:title="@string/EditLocation"
+        android:orderInCategory="100"
+        android:icon="@drawable/edit"
+        android:showAsAction="always"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_AddLocation"
+        android:title="@string/deleteLocation"
+        android:orderInCategory="100"
+        android:icon="@drawable/delete"
+        android:showAsAction="always"
+        app:showAsAction="never" />
+</menu>

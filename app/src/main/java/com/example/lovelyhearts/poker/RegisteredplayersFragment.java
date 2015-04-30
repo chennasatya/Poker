@@ -33,10 +33,10 @@ public class RegisteredplayersFragment extends ListFragment {
         setRetainInstance(true);
 
         List<User> list=new ArrayList<User>();
-        User t1=new User();
+        User t1=new User(1,"Bob","123",true ,"234","tert","234","rre","sef","sgs","sdg","sfds");
         t1.setName("Bob");
         list.add(t1);
-        User t2=new User();
+        User t2=new User(1,"Bob","123",true ,"234","tert","234","rre","sef","sgs","sdg","sfds");
         t2.setName("Eva");
         list.add(t2);
 

@@ -1,0 +1,171 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+
+    tools:context="com.example.lovelyhearts.poker.LocationDetails">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_locationame"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:id="@+id/et_locationNameText"
+        android:editable="false"
+        android:layout_margin="0dp"
+        android:layout_alignRight="@+id/lbl_locationame"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_location_phone"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/et_locationNameText"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:id="@+id/et_locationPhonText"
+        android:editable="false"
+        android:layout_alignRight="@+id/lbl_location_phone"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="47dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_location_Address"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/et_locationPhonText"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:id="@+id/et_locationAddressText"
+        android:editable="false"
+        android:layout_alignRight="@+id/lbl_location_Address"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="77dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_location_City"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/et_locationAddressText"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:id="@+id/et_locationCityText"
+        android:editable="false"
+        android:layout_alignRight="@+id/lbl_location_City"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="117dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="State:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_location_State"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/et_locationCityText"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:id="@+id/et_locationStateText"
+        android:editable="false"
+        android:layout_alignRight="@+id/lbl_location_State"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="157dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zip:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_location_Zip"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/et_locationStateText"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:id="@+id/et_locationZipText"
+        android:editable="false"
+        android:layout_alignRight="@+id/lbl_location_Zip"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="197dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact:"
+        android:textSize="20dp"
+        android:id="@+id/lbl_location_Contact"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/et_locationZipText"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:id="@+id/et_locationContactText"
+        android:editable="false"
+        android:layout_alignRight="@+id/lbl_location_Contact"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="237dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Tournaments"
+        android:id="@+id/ttl_Tournament"
+        android:layout_below="@+id/et_locationContactText"
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="90dp"
+        />
+
+    <fragment
+        android:id="@+id/list_Tournaments"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/ttl_Tournament"
+        class="com.example.lovelyhearts.poker.RegisteredplayersFragment" />
+
+</RelativeLayout>

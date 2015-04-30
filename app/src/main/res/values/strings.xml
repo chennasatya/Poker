@@ -43,6 +43,11 @@
     <string name="title_activity_detailplayer">Player Details</string>
     <string name="title_activity_editplayer">Edit Player</string>
 
+
+    <!--Location Details-->
+    <string name="AddLocation">Add Location</string>
+    <string name="EditLocation">Edit Location</string>
+    <string name="deleteLocation">Delete Location</string>
     <!-- sign in -->
     <string name="SignIn">SignIn</string>
     <string name="userlabel">userlabel</string>
@@ -57,5 +62,6 @@
     <string name="URL_BASE">https://api.myjson.com/bins/3mk2l/</string>
     <string name="title_activity_edit_tournament">EditTournament</string>
     <string name="title_activity_edit_location">EditLocation</string>
+    <string name="title_activity_location_details">LocationDetails</string>
 
 </resources>

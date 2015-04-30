@@ -49,7 +49,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address:"
+        android:text="Time:"
         android:textSize="20dp"
         android:id="@+id/lbl_location_Address"
         android:layout_marginTop="20dp"
@@ -69,7 +69,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="City:"
+        android:text="MaxPlayers:"
         android:textSize="20dp"
         android:id="@+id/lbl_location_City"
         android:layout_marginTop="20dp"
@@ -90,7 +90,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="State:"
+        android:text="BuyIn:"
         android:textSize="20dp"
         android:id="@+id/lbl_location_State"
         android:layout_marginTop="20dp"
