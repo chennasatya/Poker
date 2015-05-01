@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
@@ -20,30 +21,69 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends ActionBarActivity {
 
     private Spinner spinner;
     private String[] typesOfUsers;
-
+    List<User> allUsers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final EditText username=(EditText)findViewById(R.id.tvUserName);
         final EditText password =(EditText)findViewById(R.id.tvPassword);
+
         final Button buttonSigin =(Button)findViewById(R.id.btn_SignIn);
         final Button buttonCreateAccount = (Button) findViewById(R.id.btn_createAccount);
+
+        allUsers = new ArrayList<User>();
+        User u1 = new User();
+        u1.setName("User1");
+        u1.setPassword("User1");
+        u1.setIsAdmin(true);
+
+        User u2 = new User();
+        u2.setName("User2");
+        u2.setPassword("User2");
+        u2.setIsAdmin(false);
+
+        allUsers.add(u1);
+        allUsers.add(u2);
+
         buttonSigin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 String uservalue= username.getText().toString();
                 String pwdValue = password.getText().toString();
-                if(uservalue.equals("user") && pwdValue.equals("poker") ) {
-                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                    startActivity(intent);
+
+
+                for(User user: allUsers)
+                {
+                    //boolean cal = user.equals(currentUser);
+                    String name =user.getName();
+                    String pwd = user.getPassword();
+
+                    if(name.equals(uservalue) && pwd.equals(pwdValue)) {
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        final TextView invalid = (TextView) findViewById(R.id.LblLoginNotSuccess);
+                        invalid.setText("");
+                    }
+
+                    else {
+                        final TextView invalid = (TextView) findViewById(R.id.LblLoginNotSuccess);
+                        invalid.setText("Invalid Username and Password");
+                    }
+
                 }
+
             }
         });
+
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 

@@ -166,6 +166,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/ttl_Tournament"
-        class="com.example.lovelyhearts.poker.RegisteredplayersFragment" />
+        class="com.example.lovelyhearts.poker.LocationDetailsTournamentFragment" />
 
 </RelativeLayout>

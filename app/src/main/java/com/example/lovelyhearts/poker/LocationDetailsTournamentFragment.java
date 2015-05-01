@@ -1,11 +1,12 @@
 package com.example.lovelyhearts.poker;
 
 import android.app.Activity;
+import android.app.ListFragment;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegisteredplayersFragment extends ListFragment {
+
+public class LocationDetailsTournamentFragment extends ListFragment {
 
     ListViewAdapter mAdapter;
     LayoutInflater mInflater;
@@ -24,7 +26,7 @@ public class RegisteredplayersFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_registeredplayers, container, false);
+        return inflater.inflate(R.layout.fragment_time, container, false);
     }
 
     @Override
@@ -32,12 +34,17 @@ public class RegisteredplayersFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
         setRetainInstance(true);
 
-        List<User> list=new ArrayList<User>();
-        User t1=new User(1,"Bob","123",true ,"234","tert","234","rre","sef","sgs","sdg","sfds");
-        t1.setName("Bob");
+        List<Tournament> list=new ArrayList<Tournament>();
+        Tournament t1=new Tournament();
+        t1.setDate("4/12");
+        t1.setTime("5pm");
+        t1.setLocation("corner bar");
         list.add(t1);
-        User t2=new User();
-        t2.setName("Eva");
+
+        Tournament t2=new Tournament();
+        t2.setDate("4/15");
+        t2.setTime("6pm");
+        t2.setLocation("CrabShack");
         list.add(t2);
 
         mInflater = LayoutInflater.from(getActivity());
@@ -49,21 +56,28 @@ public class RegisteredplayersFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        Intent intent = new Intent(getActivity().getApplicationContext(), TournamentdetailActivity.class);
+        startActivity(intent);
     }
     //---------------inner class--------------------------------------------
-    public class ListViewAdapter extends ArrayAdapter<User> {
-        public ListViewAdapter(Context context, int resource, List<User> objects){
+    public class ListViewAdapter extends ArrayAdapter<Tournament> {
+        public ListViewAdapter(Context context, int resource, List<Tournament> objects){
             super(context,resource,objects);
         }
         public View getView(int position, View convertView, ViewGroup parent){
-            User user=getItem(position);
+            //get tournament entry
+            Tournament tournament=getItem(position);
 
             if(convertView == null){
-                convertView = mInflater.inflate(R.layout.row_one_column, parent, false);
+                convertView = mInflater.inflate(R.layout.row_two_column, parent, false);
                 TextView column1=(TextView)convertView.findViewById(R.id.column1);
-                column1.setText(user.getName());
+                TextView column2=(TextView)convertView.findViewById(R.id.column2);
+                column1.setText(tournament.getTime());
+                column2.setText(tournament.getLocation());
             }
             return convertView;
         }
     }
+
+
 }

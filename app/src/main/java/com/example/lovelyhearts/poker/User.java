@@ -7,7 +7,7 @@ import com.parse.ParseObject;
  * Created by ryan on 4/20/15.
  */
 @ParseClassName("User")
-public class User extends ParseObject {
+public class User /*extends ParseObject*/ {
     private Integer id;
     private String login;
     private String password;
@@ -21,7 +21,7 @@ public class User extends ParseObject {
     private String zip;
     private String phone;
 
-    public void User(){
+    public User(){
         //Default Constructor
     }
     public User(Integer id, String login, String password, boolean isAdmin, String name, String email,

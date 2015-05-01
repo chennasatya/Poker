@@ -15,7 +15,7 @@
         android:id="@+id/btn_createAccount"
         android:layout_below="@+id/tvPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="101dp" />
+        android:layout_marginTop="111dp" />
 
     <TextView
         android:id="@+id/lblSignIn"
@@ -42,6 +42,7 @@
         android:padding="8dp"
         android:textSize="16sp"
         android:layout_marginTop="40dp"
+        android:inputType="textPassword"
         android:layout_below="@+id/tvUserName"/>
     <Button
         android:layout_width="wrap_content"
@@ -52,6 +53,17 @@
         android:layout_alignRight="@+id/tvPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/LblLoginNotSuccess"
+        android:textSize="20dp"
+        android:textColor="#F00"
+        android:layout_below="@+id/tvPassword"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="75dp"/>
 
     <Button
         android:layout_width="wrap_content"
