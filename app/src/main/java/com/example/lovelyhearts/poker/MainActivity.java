@@ -30,6 +30,9 @@ public class MainActivity extends ActionBarActivity {
     private Spinner spinner;
     private String[] typesOfUsers;
     List<User> allUsers;
+    boolean userExists = false;
+    boolean pwdCorrect = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,8 @@ public class MainActivity extends ActionBarActivity {
         allUsers.add(u1);
         allUsers.add(u2);
 
+
+
         buttonSigin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -67,18 +72,38 @@ public class MainActivity extends ActionBarActivity {
                     String name =user.getName();
                     String pwd = user.getPassword();
 
-                    if(name.equals(uservalue) && pwd.equals(pwdValue)) {
+                    if(name.equals(uservalue)) {
+                        userExists = true;
+                        if(pwd.equals(pwdValue))
+                        {
+                            pwdCorrect = true;
+                            break;
+                        }
+
+                    }
+                }
+
+                if(userExists == true )
+                {
+                    if(pwdCorrect == true)
+                    {
                         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                         startActivity(intent);
                         final TextView invalid = (TextView) findViewById(R.id.LblLoginNotSuccess);
                         invalid.setText("");
                     }
 
-                    else {
+                    else
+                    {
                         final TextView invalid = (TextView) findViewById(R.id.LblLoginNotSuccess);
                         invalid.setText("Invalid Username and Password");
                     }
+                }
 
+                else
+                {
+                    final TextView invalid = (TextView) findViewById(R.id.LblLoginNotSuccess);
+                    invalid.setText("No user Exits. Create New User");
                 }
 
             }
