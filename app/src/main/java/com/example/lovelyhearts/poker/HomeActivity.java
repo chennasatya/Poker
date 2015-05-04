@@ -14,18 +14,19 @@ import com.parse.ParseException;
 import com.parse.SaveCallback;
 
 public class HomeActivity extends ActionBarActivity {
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        final String name = MainActivity.username.getText().toString();
+        name = MainActivity.username.getText().toString();
         Button buttonAccount = (Button) findViewById(R.id.btn_account);
         buttonAccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 Intent intent = new Intent(HomeActivity.this, DetailaccountActivity.class);
-               intent.putExtra("_userName",name);
+                intent.putExtra("_userName",name);
 
                 startActivity(intent);
             }
