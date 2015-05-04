@@ -5,13 +5,13 @@
 
     <item
         android:id="@+id/action_edit"
-        android:title="@string/edit"
+        android:title="@string/Edit"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_delete"
-        android:title="@string/delete"
+        android:title="@string/Delete"
         android:orderInCategory="100"
         app:showAsAction="never" />
 </menu>

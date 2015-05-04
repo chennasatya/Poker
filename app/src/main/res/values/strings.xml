@@ -6,13 +6,13 @@
     <string name="hello_world">Hello world!</string>
 
     <!-- general -->
-    <string name="save">save</string>
-    <string name="edit">edit</string>
-    <string name="delete">delete</string>
-    <string name="assign">assign table</string>
-    <string name="register">register</string>
-    <string name="unregister">unregister</string>
-    <string name="play">play</string>
+    <string name="Save">Save</string>
+    <string name="Edit">Edit</string>
+    <string name="Delete">Delete</string>
+    <string name="AssignTables">AssignTable</string>
+    <string name="Register">Register</string>
+    <string name="UnRegister">UnRegister</string>
+    <string name="Play">Play</string>
     <string name="action_delete"></string>
     <!-- home -->
     <string name="title_activity_home">Home</string>

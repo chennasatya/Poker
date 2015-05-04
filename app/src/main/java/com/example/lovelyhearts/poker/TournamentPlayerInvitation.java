@@ -7,7 +7,7 @@ import com.parse.ParseObject;
  * Created by ryan on 4/21/15.
  */
 @ParseClassName("TournamentPlayerInvitation")
-public class TournamentPlayerInvitation extends ParseObject {
+public class TournamentPlayerInvitation /*extends ParseObject*/ {
 
     public void TournamentPlayerInvitation(){
         //Default Constructor

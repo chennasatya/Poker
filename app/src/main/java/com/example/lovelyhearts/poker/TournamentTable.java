@@ -7,7 +7,7 @@ import com.parse.ParseObject;
  * Created by ryan on 4/21/15.
  */
 @ParseClassName("TournamentTable")
-public class TournamentTable extends ParseObject {
+public class TournamentTable /*extends ParseObject*/ {
 
     private int TournamentId;   // Foreign key to the Tournament object
     private int TableId;

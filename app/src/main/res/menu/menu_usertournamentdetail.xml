@@ -1,12 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.lovelyhearts.poker.EditplayerActivity">
+    tools:context="com.example.lovelyhearts.poker.TournamentdetailActivity">
 
     <item
-        android:id="@+id/action_save"
-        android:title="@string/Edit"
+        android:id="@+id/action_Register"
+        android:title="@string/Register"
         android:orderInCategory="100"
         app:showAsAction="never" />
+
 
 </menu>

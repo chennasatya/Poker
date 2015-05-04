@@ -16,7 +16,8 @@ import java.util.List;
 public class DetailaccountActivity extends ActionBarActivity {
 
     //private static List<User> users;
-
+    UserManager um;
+    User mUser;
     String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +26,10 @@ public class DetailaccountActivity extends ActionBarActivity {
 
 
 
-         username = getIntent().getExtras().getString("_userName");
+        username = getIntent().getExtras().getString("_userName");
 
-        UserManager um = new UserManager();
-        User mUser = um.GetUser(username);
+        um = new UserManager();
+        mUser = um.GetUser(username);
 
         ((EditText) findViewById(R.id.detailaccount_name)).setText(mUser.getName());
         ((EditText) findViewById(R.id.detailaccount_email)).setText(mUser.getEmail());
@@ -42,6 +43,18 @@ public class DetailaccountActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_detailaccount, menu);
+        mUser = um.GetUser(username);
+        boolean isAdmin = mUser.getIsAdmin();
+//
+//        if(isAdmin == true)
+//        {
+//            getMenuInflater().inflate(R.menu.menu_detailaccount, menu);
+//        }
+//
+//        else {
+//
+//            getMenuInflater().inflate(R.menu.normaluserdetailsaccount, menu);
+//        }
         return true;
     }
 
@@ -49,6 +62,8 @@ public class DetailaccountActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         Intent intent=null;
+
+
         switch(id){
             case R.id.action_edit:
                 //final String name = MainActivity.username.getText().toString();

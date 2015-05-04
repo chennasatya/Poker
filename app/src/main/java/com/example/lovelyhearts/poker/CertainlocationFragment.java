@@ -60,6 +60,7 @@ public class CertainlocationFragment extends ListFragment {
                 TournamentdetailActivity.class);
         intent.putExtra("_locationId","Corner bar");
         intent.putExtra("_positionId",position);
+        //intent.putExtra("_userName", MainActivity.username.getText().toString());
         startActivity(intent);
     }
 

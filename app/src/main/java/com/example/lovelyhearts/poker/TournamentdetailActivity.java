@@ -29,10 +29,16 @@ import java.util.List;
 public class TournamentdetailActivity extends ActionBarActivity {
     List<Tournament> tournamentList ;
     private static List<Location> locations;
-
+    UserManager um;
+    User mUser;
+    String username ;
+    TextView textMsg;
+    boolean registered = false;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournamentdetail);
+
+        username = MainActivity.username.getText().toString();
 
         tournamentList = new ArrayList<Tournament>();
 
@@ -78,7 +84,34 @@ public class TournamentdetailActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_tournamentdetail, menu);
+        //getMenuInflater().inflate(R.menu.menu_tournamentdetail, menu);
+        um = new UserManager();
+        mUser = um.GetUser(username);
+        boolean isAdmin = mUser.getIsAdmin();
+        if(isAdmin == true)
+        {
+            getMenuInflater().inflate(R.menu.menu_tournamentdetail, menu);
+        }
+
+        else {
+
+
+            textMsg = (TextView) findViewById(R.id.lbl_registerwarning);
+            String mess = textMsg.getText().toString();
+
+            if(mess.contains("You are not registered") || mess.contains("")) {
+                textMsg.setText("You are not registered");
+                getMenuInflater().inflate(R.menu.menu_usertournamentdetail, menu);
+            }
+            else
+            {
+                getMenuInflater().inflate(R.menu.menu_registertournamentdetails, menu);
+                textMsg.setText("You are registered");
+            }
+
+
+
+        }
         return true;
     }
 
@@ -92,12 +125,16 @@ public class TournamentdetailActivity extends ActionBarActivity {
                 intent = new Intent(this,PlayActivity.class);
                 startActivity(intent);
                 return true;
-            //admin
-            case R.id.action_assigntable:
+           //admin
+            case R.id.action_Assigntable:
                 intent = new Intent(this,TableActivity.class);
                 startActivity(intent);
                 return true;
 
+            case R.id.action_Register:
+                textMsg.setText("You are registered");
+                //Need to Do: Update data to DB
+                registered = true;
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -105,4 +142,14 @@ public class TournamentdetailActivity extends ActionBarActivity {
         }
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        if(registered == true) {
+            menu.removeItem(R.id.action_Register);
+            getMenuInflater().inflate(R.menu.menu_registertournamentdetails, menu);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
+    }
 }

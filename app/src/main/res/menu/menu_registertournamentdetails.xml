@@ -1,17 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.lovelyhearts.poker.CreateaccountActivity">
+    tools:context="com.example.lovelyhearts.poker.TournamentdetailActivity">
 
+    <!--for registered user-->
     <item
-        android:id="@+id/action_save"
-        android:title="@string/Save"
+        android:id="@+id/action_unregister"
+        android:title="@string/UnRegister"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_delete"
-        android:title="@string/Delete"
+        android:id="@+id/action_play"
+        android:title="@string/Play"
         android:orderInCategory="100"
         app:showAsAction="never" />
 

@@ -6,39 +6,34 @@
     <!--for admin-->
     <item
         android:id="@+id/action_edit"
-        android:title="@string/edit"
+        android:title="@string/Edit"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_delete"
-        android:title="@string/delete"
+        android:title="@string/Delete"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_assigntable"
-        android:title="@string/assign"
+        android:id="@+id/action_Assigntable"
+        android:title="@string/AssignTables"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
     <!--for unregistered user-->
-    <item
-        android:id="@+id/action_register"
-        android:title="@string/register"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_Register"-->
+        <!--android:title="@string/Register"-->
+        <!--android:orderInCategory="100"-->
+        <!--app:showAsAction="never" />-->
 
-    <item
-        android:id="@+id/action_play"
-        android:title="@string/play"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_play"-->
+        <!--android:title="@string/play"-->
+        <!--android:orderInCategory="100"-->
+        <!--app:showAsAction="never" />-->
 
-    <!--for registered user-->
-    <item
-        android:id="@+id/action_unregister"
-        android:title="@string/unregister"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+
 </menu>
