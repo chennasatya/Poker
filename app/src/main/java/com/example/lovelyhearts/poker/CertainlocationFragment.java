@@ -2,6 +2,7 @@ package com.example.lovelyhearts.poker;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -55,7 +56,14 @@ public class CertainlocationFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        Intent intent = new Intent(getActivity().getApplicationContext(),
+                TournamentdetailActivity.class);
+        intent.putExtra("_locationId","Corner bar");
+        intent.putExtra("_positionId",position);
+        startActivity(intent);
     }
+
+
     //---------------inner class--------------------------------------------
     public class ListViewAdapter extends ArrayAdapter<Tournament> {
         public ListViewAdapter(Context context, int resource, List<Tournament> objects){

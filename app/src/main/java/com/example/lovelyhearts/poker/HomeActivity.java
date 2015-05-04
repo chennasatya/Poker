@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.parse.ParseACL;
 import com.parse.ParseException;
@@ -18,11 +19,14 @@ public class HomeActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        final String name = MainActivity.username.getText().toString();
         Button buttonAccount = (Button) findViewById(R.id.btn_account);
         buttonAccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 Intent intent = new Intent(HomeActivity.this, DetailaccountActivity.class);
+               intent.putExtra("_userName",name);
+
                 startActivity(intent);
             }
         });

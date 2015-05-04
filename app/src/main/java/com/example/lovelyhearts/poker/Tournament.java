@@ -10,13 +10,24 @@ import com.parse.ParseObject;
 import java.util.Date;
 
 @ParseClassName("Tournament")
-public class Tournament extends ParseObject {
+public class Tournament /*extends ParseObject*/ {
     private String date;
     private String time;
     private String location;
     private String week;
 
-    public void Tournament(){
+    private int position;
+
+    public int getPosition() { return position;
+    }
+
+    public void setPosition(int position) { this.position = position;
+    }
+
+
+
+
+    public Tournament(){
         //Default Constructor
     }
 
@@ -53,4 +64,9 @@ public class Tournament extends ParseObject {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    private int buyIn;
+    public int getBuyIn() {  return buyIn;}
+
+    public void setBuyIn(int buyIn) {this.buyIn = buyIn;}
 }

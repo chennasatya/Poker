@@ -32,12 +32,13 @@ public class MainActivity extends ActionBarActivity {
     List<User> allUsers;
     boolean userExists = false;
     boolean pwdCorrect = false;
+    static EditText username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final EditText username=(EditText)findViewById(R.id.tvUserName);
+         username=(EditText)findViewById(R.id.tvUserName);
         final EditText password =(EditText)findViewById(R.id.tvPassword);
 
         final Button buttonSigin =(Button)findViewById(R.id.btn_SignIn);
@@ -45,8 +46,8 @@ public class MainActivity extends ActionBarActivity {
 
         allUsers = new ArrayList<User>();
         User u1 = new User();
-        u1.setName("User1");
-        u1.setPassword("User1");
+        u1.setName("u");
+        u1.setPassword("u");
         u1.setIsAdmin(true);
 
         User u2 = new User();
