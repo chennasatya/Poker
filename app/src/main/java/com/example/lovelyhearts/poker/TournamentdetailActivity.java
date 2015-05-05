@@ -86,6 +86,7 @@ public class TournamentdetailActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         //getMenuInflater().inflate(R.menu.menu_tournamentdetail, menu);
         um = new UserManager();
+        username = MainActivity.username.getText().toString();
         mUser = um.GetUser(username);
         boolean isAdmin = mUser.getIsAdmin();
         if(isAdmin == true)
@@ -99,11 +100,11 @@ public class TournamentdetailActivity extends ActionBarActivity {
             textMsg = (TextView) findViewById(R.id.lbl_registerwarning);
             String mess = textMsg.getText().toString();
 
-            if(mess.contains("You are not registered") || mess.contains("")) {
+            if((mess.contains("You are not registered") || mess.contains("")) && registered == false) {
                 textMsg.setText("You are not registered");
                 getMenuInflater().inflate(R.menu.menu_usertournamentdetail, menu);
             }
-            else
+            else if(registered == true)
             {
                 getMenuInflater().inflate(R.menu.menu_registertournamentdetails, menu);
                 textMsg.setText("You are registered");
@@ -124,32 +125,34 @@ public class TournamentdetailActivity extends ActionBarActivity {
             case R.id.action_play:
                 intent = new Intent(this,PlayActivity.class);
                 startActivity(intent);
-                return true;
+                break;
            //admin
             case R.id.action_Assigntable:
                 intent = new Intent(this,TableActivity.class);
                 startActivity(intent);
-                return true;
+                break;
 
             case R.id.action_Register:
                 textMsg.setText("You are registered");
                 //Need to Do: Update data to DB
                 registered = true;
+                invalidateOptionsMenu();
+                break;
+
+            case R.id.action_unregister:
+                textMsg.setText("You are not registered");
+                //Need to Do: Update data to DB
+                registered = false;
+                invalidateOptionsMenu();
+                break;
 
             default:
                 return super.onOptionsItemSelected(item);
 
+
         }
+        return true;
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
 
-        if(registered == true) {
-            menu.removeItem(R.id.action_Register);
-            getMenuInflater().inflate(R.menu.menu_registertournamentdetails, menu);
-        }
-
-        return super.onPrepareOptionsMenu(menu);
-    }
 }
