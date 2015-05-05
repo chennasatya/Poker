@@ -1,17 +1,31 @@
 package com.example.lovelyhearts.poker;
 
+import android.location.LocationManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 
 public class EditTournament extends ActionBarActivity {
+
+    String tournamentLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_tournament);
+
+        tournamentLocation = getIntent().getExtras().getString("_locationName");
+        TournamentManager um = new TournamentManager();
+        Tournament mTournament = um.GetTournament(tournamentLocation);
+
+        ((EditText) findViewById(R.id.et_tournament_locationNameText)).setText(mTournament.getLocation());
+        ((EditText) findViewById(R.id.et_locationDate)).setText(mTournament.getDate());
+        ((EditText) findViewById(R.id.et_Time)).setText(mTournament.getTime());
+        ((EditText) findViewById(R.id.et_MaxPlayer)).setText(String.valueOf(mTournament.getMaxPlayers()));
+        ((EditText) findViewById(R.id.et_BuyIn)).setText(String.valueOf(mTournament.getBuyIn()));
     }
 
 

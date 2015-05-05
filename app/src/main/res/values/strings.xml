@@ -22,6 +22,8 @@
     <string name="title_activity_createaccount">Create Account</string>
     <string name="title_activity_detailaccount">Account Details</string>
 
+    <string name="EditTournament">EditTournament</string>
+    <string name="DeleteTournament">DeleteTournament</string>
     <!-- tournament -->
     <string name="title_activity_tournament">Tournament</string>
     <string name="title_activity_tournamentdetail">Tournament Details</string>

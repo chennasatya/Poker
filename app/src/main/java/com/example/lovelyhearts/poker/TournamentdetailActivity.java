@@ -1,12 +1,14 @@
 package com.example.lovelyhearts.poker;
 
+import android.app.Fragment;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
+import android.app.ListFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -21,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,8 @@ public class TournamentdetailActivity extends ActionBarActivity {
     User mUser;
     String username ;
     TextView textMsg;
+    RegisteredplayersFragment rs;
+
     boolean registered = false;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +56,6 @@ public class TournamentdetailActivity extends ActionBarActivity {
         t.setPosition(0);
 
         tournamentList.add(t);
-
-
 
         Tournament t2 = new Tournament();
         t2.setLocation("Corner bar");
@@ -95,8 +98,6 @@ public class TournamentdetailActivity extends ActionBarActivity {
         }
 
         else {
-
-
             textMsg = (TextView) findViewById(R.id.lbl_registerwarning);
             String mess = textMsg.getText().toString();
 
@@ -109,9 +110,6 @@ public class TournamentdetailActivity extends ActionBarActivity {
                 getMenuInflater().inflate(R.menu.menu_registertournamentdetails, menu);
                 textMsg.setText("You are registered");
             }
-
-
-
         }
         return true;
     }
@@ -120,6 +118,7 @@ public class TournamentdetailActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         Intent intent=null;
+        rs = new RegisteredplayersFragment();
         switch(id){
             //player
             case R.id.action_play:
@@ -137,6 +136,16 @@ public class TournamentdetailActivity extends ActionBarActivity {
                 //Need to Do: Update data to DB
                 registered = true;
                 invalidateOptionsMenu();
+
+//
+//
+//                 Fragment fm =  getFragmentManager().findFragmentById(R.id.ttl_registeredplayers);
+//                 // View listView = fm.getActivity().findViewById(R.id.ttl_registeredplayers);
+//                List<User> l = new ArrayList<User>();
+//                User t1=new User();
+//                t1.setName(username);
+//                l.add(t1);
+
                 break;
 
             case R.id.action_unregister:
@@ -146,12 +155,47 @@ public class TournamentdetailActivity extends ActionBarActivity {
                 invalidateOptionsMenu();
                 break;
 
+            case R.id.action_edittournament:
+                intent = new Intent(this,EditTournament.class);
+                String location = ((EditText)findViewById(R.id.editLocation)).getText().toString();
+                intent.putExtra("_locationName", location);
+                startActivity(intent);
+                ShowToast("Changes Saved");
+                finish();
+                break;
+
+            case R.id.action_deletetournament:
+                NavUtils.navigateUpFromSameTask(this);
+                break;
+
             default:
                 return super.onOptionsItemSelected(item);
 
 
         }
         return true;
+    }
+
+
+    void ShowToast(CharSequence text)
+    {
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+    private void SaveChanges()
+    {
+        Tournament mTournament = new Tournament();
+        mTournament.setLocation(((TextView) findViewById(R.id.editLocation)).getText().toString());
+        mTournament.setDate(((TextView) findViewById(R.id.editDate)).getText().toString());
+        mTournament.setTime(((TextView) findViewById(R.id.editTime)).getText().toString());
+       // mTournament.setBuyIn((TextView) findViewById((R.id.editBuyin)).toString()
+        //getText().toString());
+
+
     }
 
 

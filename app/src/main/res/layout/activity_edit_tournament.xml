@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="12"
-        android:id="@+id/et_locationPhonText"
+        android:id="@+id/et_locationDate"
         android:editable="true"
         android:layout_alignRight="@+id/lbl_location_phone"
         android:layout_alignParentEnd="true"
@@ -53,14 +53,14 @@
         android:textSize="20dp"
         android:id="@+id/lbl_location_Address"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/et_locationPhonText"
+        android:layout_below="@+id/et_locationDate"
         />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="12"
-        android:id="@+id/et_locationAddressText"
+        android:id="@+id/et_Time"
         android:editable="true"
         android:layout_alignRight="@+id/lbl_location_Address"
         android:layout_alignParentEnd="true"
@@ -73,14 +73,14 @@
         android:textSize="20dp"
         android:id="@+id/lbl_location_City"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/et_locationAddressText"
+        android:layout_below="@+id/et_Time"
         />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="12"
-        android:id="@+id/et_locationCityText"
+        android:id="@+id/et_MaxPlayer"
         android:editable="true"
         android:layout_alignRight="@+id/lbl_location_City"
         android:layout_alignParentEnd="true"
@@ -94,14 +94,14 @@
         android:textSize="20dp"
         android:id="@+id/lbl_location_State"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/et_locationCityText"
+        android:layout_below="@+id/et_MaxPlayer"
         />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="12"
-        android:id="@+id/et_locationStateText"
+        android:id="@+id/et_BuyIn"
         android:editable="true"
         android:layout_alignRight="@+id/lbl_location_State"
         android:layout_alignParentEnd="true"

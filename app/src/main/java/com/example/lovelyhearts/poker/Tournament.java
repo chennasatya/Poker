@@ -15,8 +15,12 @@ public class Tournament /*extends ParseObject*/ {
     private String time;
     private String location;
     private String week;
-
+    private String maxPlayers;
     private int position;
+
+    public String getMaxPlayers() { return maxPlayers;}
+
+    public void setMaxPlayers(int position) { this.maxPlayers = maxPlayers;}
 
     public int getPosition() { return position;
     }
