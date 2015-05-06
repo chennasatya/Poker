@@ -12,7 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseCrashReporting;
@@ -38,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         username=(EditText)findViewById(R.id.tvUserName);
+        username = (EditText)findViewById(R.id.tvUserName);
         final EditText password =(EditText)findViewById(R.id.tvPassword);
 
         final Button buttonSigin =(Button)findViewById(R.id.btn_SignIn);
@@ -66,12 +68,34 @@ public class MainActivity extends ActionBarActivity {
                 String uservalue= username.getText().toString();
                 String pwdValue = password.getText().toString();
 
-
+// Send data to Parse.com for verification
+                ParseUser.logInInBackground(uservalue, pwdValue,
+                        new LogInCallback() {
+                            public void done(ParseUser user, ParseException e) {
+                                if (user != null) {
+                                    // If user exist and authenticated, send user to Welcome.class
+                                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                    final TextView invalid = (TextView) findViewById(R.id.LblLoginNotSuccess);
+                                    Toast.makeText(getApplicationContext(),
+                                            "Successfully Logged in",
+                                            Toast.LENGTH_LONG).show();
+                                    finish();
+                                } else {
+                                    Toast.makeText(
+                                            getApplicationContext(),
+                                            "No such user exist, please signup",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                /*
                 for(User user: allUsers)
                 {
                     //boolean cal = user.equals(currentUser);
                     String name =user.getName();
                     String pwd = user.getPassword();
+
 
                     if(name.equals(uservalue)) {
                         userExists = true;
@@ -105,7 +129,7 @@ public class MainActivity extends ActionBarActivity {
                 {
                     final TextView invalid = (TextView) findViewById(R.id.LblLoginNotSuccess);
                     invalid.setText("No user Exits. Create New User");
-                }
+                }*/
 
             }
         });

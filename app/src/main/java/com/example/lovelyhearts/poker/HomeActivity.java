@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 public class HomeActivity extends ActionBarActivity {
@@ -20,7 +21,14 @@ public class HomeActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        name = MainActivity.username.getText().toString();
+
+        // Retrieve current user from Parse.com
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        // Convert currentUser into String
+        name = currentUser.getUsername();
+        //name = MainActivity.username.getText().toString();
+
         Button buttonAccount = (Button) findViewById(R.id.btn_account);
         buttonAccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
