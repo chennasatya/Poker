@@ -22,7 +22,8 @@ public class HomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Retrieve current user from Parse.com
+        // Retrieve current user from cache (done automatically by Parse when
+        // any login or signup activity
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         // Convert currentUser into String

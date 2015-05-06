@@ -8,6 +8,7 @@ import com.parse.ParseClassName;
  */
 @ParseClassName("Location")
 public class Location extends ParseObject{
+
     private Integer id;
     private String name;
     private String email;

@@ -19,6 +19,7 @@ public class CreateaccountActivity extends ActionBarActivity {
     static EditText email;
     static EditText phone;
     static EditText address;
+    static EditText name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,8 @@ public class CreateaccountActivity extends ActionBarActivity {
         setContentView(R.layout.activity_createaccount);
 
         username = (EditText)findViewById(R.id.createaccount_username);
-        password = (EditText)findViewById(R.id.createaccount_name);
+        name = (EditText)findViewById(R.id.createaccount_name);
+        password = (EditText)findViewById(R.id.createaccount_pwd);
         email = (EditText)findViewById(R.id.createaccount_email);
         phone = (EditText)findViewById(R.id.createaccount_phone);
         address = (EditText)findViewById(R.id.createaccount_address);
@@ -52,6 +54,7 @@ public class CreateaccountActivity extends ActionBarActivity {
         String emailValue = email.getText().toString();
         String phoneValue = phone.getText().toString();
         String addressValue = address.getText().toString();
+        String nameValue = address.getText().toString();
 
         switch(id){
         case R.id.action_save:
@@ -65,15 +68,23 @@ public class CreateaccountActivity extends ActionBarActivity {
             {
                 // Save new user data into Parse.com Data Storage
                 ParseUser user = ParseUser.getCurrentUser();
-                if(user == null) {
-                    user = new ParseUser();
+
+                // If a user is already logged in, log them out first
+                // Parse will just return an error if they try to create the same
+                // account again, so no reason to keep them logged in on the createaccount page
+                if (user != null) {
+                    ParseUser.logOut();
                 }
+
+                user = new ParseUser();
+
                 //ParseUser user = new ParseUser();
                 user.setUsername(uservalue);
                 user.setPassword(pwdValue);
                 user.setEmail(emailValue);
                 user.put("phone", phoneValue);
                 user.put("address", addressValue);
+                user.put("name",nameValue);
 
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
@@ -82,6 +93,7 @@ public class CreateaccountActivity extends ActionBarActivity {
                             Toast.makeText(getApplicationContext(),
                                     "Successfully Signed up, please log in.",
                                     Toast.LENGTH_LONG).show();
+                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(),
                                     "Sign up Error: "+e.toString(), Toast.LENGTH_LONG)

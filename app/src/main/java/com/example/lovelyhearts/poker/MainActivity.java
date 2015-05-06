@@ -46,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
         final Button buttonSigin =(Button)findViewById(R.id.btn_SignIn);
         final Button buttonCreateAccount = (Button) findViewById(R.id.btn_createAccount);
 
-        allUsers = new ArrayList<User>();
+       /* allUsers = new ArrayList<User>();
         User u1 = new User();
         u1.setName("u");
         u1.setPassword("u");
@@ -60,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
         allUsers.add(u1);
         allUsers.add(u2);
 
-
+        */
 
         buttonSigin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -73,7 +73,7 @@ public class MainActivity extends ActionBarActivity {
                         new LogInCallback() {
                             public void done(ParseUser user, ParseException e) {
                                 if (user != null) {
-                                    // If user exist and authenticated, send user to Welcome.class
+                                    // If user exist and authenticated send user to Welcome.class
                                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                                     startActivity(intent);
                                     final TextView invalid = (TextView) findViewById(R.id.LblLoginNotSuccess);
