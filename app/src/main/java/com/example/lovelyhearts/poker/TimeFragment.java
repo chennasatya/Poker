@@ -32,12 +32,12 @@ public class TimeFragment extends ListFragment {
 
         List<Tournament> list=new ArrayList<Tournament>();
         Tournament t1=new Tournament();
-        t1.setDate("4/12");
+        t1.setDate("4/12/2015");
         t1.setTime("5pm");
         t1.setLocation("corner bar");
         list.add(t1);
         Tournament t2=new Tournament();
-        t2.setDate("4/15");
+        t2.setDate("4/15/2015");
         t2.setTime("6pm");
         t2.setLocation("CrabShack");
         list.add(t2);
