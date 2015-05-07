@@ -1,5 +1,7 @@
 package com.example.lovelyhearts.poker;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBar.TabListener;
@@ -11,58 +13,72 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 
+import android.support.v7.internal.widget.AdapterViewCompat;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.parse.ParseQuery;
+import com.parse.ParseQueryAdapter;
 
 
-public class TournamentActivity extends ActionBarActivity implements TabListener{
-    PagerAdapter pagerAdapter;
-    ViewPager viewPager;
-    ActionBar actionBar;
+public class TournamentActivity extends ActionBarActivity {
+
+    private LayoutInflater inflater;
+    private ParseQueryAdapter<Tournament> tournamentListAdapter;
+    //private static final int LOGIN_ACTIVITY_CODE = 100;
+    //private static final int EDIT_ACTIVITY_CODE = 200;
+    private static final int VIEW_ACTIVITY_CODE = 300;
+
+    private ListView tournamentListView;
+    private LinearLayout noTournamentView;
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament);
 
-        actionBar=getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        viewPager = (ViewPager) findViewById(R.id.pager);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        // set up the views
+        tournamentListView = (ListView) findViewById(R.id.tournament_list_view);
+        noTournamentView = (LinearLayout) findViewById(R.id.no_tournament_view);
+        tournamentListView.setEmptyView(noTournamentView);
+
+        // set up Parse query for adapter
+        ParseQueryAdapter.QueryFactory<Tournament> factory = new ParseQueryAdapter.QueryFactory<Tournament>() {
+            public ParseQuery<Tournament> create() {
+                ParseQuery<Tournament> query = Tournament.getQuery();
+                query.orderByAscending("date");
+                query.fromLocalDatastore();
+                return query;
             }
+        };
 
+        // set up adapter
+        inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        tournamentListAdapter = new TournamentListAdapter(this, factory);
+
+        // attach query adapter to ListView
+        ListView tournamentListView = (ListView) findViewById(R.id.tournament_list_view);
+        tournamentListView.setAdapter(tournamentListAdapter);
+
+        tournamentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onPageSelected(int position) {
-                actionBar.setSelectedNavigationItem(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                if(state == ViewPager.SCROLL_STATE_IDLE){
-
-                }
-                if(state == ViewPager.SCROLL_STATE_DRAGGING){
-
-                }
-                if(state == ViewPager.SCROLL_STATE_SETTLING){
-
-                }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Tournament tournament = tournamentListAdapter.getItem(position);
+                openDetailView(tournament);
             }
         });
+    }
 
-
-        Tab timeTab= actionBar.newTab();
-        timeTab.setTabListener(this);
-        timeTab.setText("Time/Date");
-
-        Tab locationTab= actionBar.newTab();
-        locationTab.setTabListener(this);
-        locationTab.setText("Location");
-
-        actionBar.addTab(timeTab);
-        actionBar.addTab(locationTab);
-
-        viewPager.setAdapter(pagerAdapter);
+    private void openDetailView(Tournament tournament) {
+        Intent i = new Intent(TournamentActivity.this, TournamentdetailActivity.class);
+        i.putExtra("ID", tournament.getUuidString());
+        startActivityForResult(i,VIEW_ACTIVITY_CODE);
     }
 
     @Override
@@ -71,43 +87,42 @@ public class TournamentActivity extends ActionBarActivity implements TabListener
         return true;
     }
 
-    @Override
-    public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
-        viewPager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabUnselected(Tab tab, FragmentTransaction fragmentTransaction) {
-
-    }
-
-    @Override
-    public void onTabReselected(Tab tab, FragmentTransaction fragmentTransaction) {
-
-    }
-
-
-    public static class PagerAdapter extends FragmentStatePagerAdapter {
-
-        public PagerAdapter(FragmentManager fm) {
-            super(fm);
+    private class TournamentListAdapter extends ParseQueryAdapter<Tournament> {
+        public TournamentListAdapter(Context context,
+                                     QueryFactory<Tournament> queryFactory) {
+            super(context, queryFactory);
         }
 
         @Override
-        public Fragment getItem(int i) {
-            if(i==0) {
-                return new TimeFragment();
-            }
-            if(i==1){
-                return new LocationFragment();
-            }
-            return null;
-        }
+        public View getItemView(Tournament tournament, View view, ViewGroup parent) {
+            ViewHolder holder;
 
-        @Override
-        public int getCount() {
-            return 2;
+            if (view == null) {
+                view = getLayoutInflater().inflate(R.layout.row_two_column, parent, false);
+                holder = new ViewHolder();
+
+                holder.tournamentName = (TextView)view.findViewById(R.id.column1);
+                holder.tournamentDateTime=(TextView)view.findViewById(R.id.column2);
+
+                view.setTag(holder);
+            } else {
+                holder = (ViewHolder) view.getTag();
+            }
+            TextView tournyName = holder.tournamentName;
+            tournyName.setText(tournament.getName());
+            TextView tournyDT = holder.tournamentDateTime;
+            tournyDT.setText(tournament.getDate() + " " + tournament.getTime());
+
+            return view;
         }
     }
+
+    private static class ViewHolder {
+        TextView tournamentName;
+        TextView tournamentDateTime;
+
+    }
+
 }
+
 

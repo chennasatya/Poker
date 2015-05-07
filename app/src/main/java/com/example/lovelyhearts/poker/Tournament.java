@@ -6,71 +6,94 @@ package com.example.lovelyhearts.poker;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.Date;
+import java.util.UUID;
 
 @ParseClassName("Tournament")
-public class Tournament /*extends ParseObject*/ {
-    private String date;
-    private String time;
-    private String location;
-    private String week;
-    private String maxPlayers;
-    private int position;
-
-    public String getMaxPlayers() { return maxPlayers;}
-
-    public void setMaxPlayers(int position) { this.maxPlayers = maxPlayers;}
-
-    public int getPosition() { return position;
-    }
-
-    public void setPosition(int position) { this.position = position;
-    }
-
-
-
+public class Tournament extends ParseObject {
+//    private String date;
+//    private String time;
+//    private String location = "TBD";
+//    private String week;
+//    private String maxPlayers;
+//    private int buyIn;
+//    private String name;
+//    private String ObjectId;
 
     public Tournament(){
         //Default Constructor
+        //Must have blank constructor to work with Parse
+        //Do not modify any fields in this constructor
     }
 
     public String getWeek() {
-        return week;
+        return getString("week");
     }
-
-    public void setWeek(String week) {
-        this.week = week;
+    public void setWeek(String value) {
+        put("week", value);
     }
-
 
     public String getDate() {
-        return date;
+        return getString("date");
     }
-
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(String value) {
+        put("date",value);
     }
 
     public String getTime() {
-        return time;
+        return getString("time");
+    }
+    public void setTime(String value) {
+        put("time",value);
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public String getMaxPlayers() {
+        return getString("maxPlayers");
+    }
+    public void setMaxPlayers(int value) {
+        put("maxPlayers",value);
     }
 
 
     public String getLocation() {
-        return location;
+        return getString("location");
+    }
+    public void setLocation(String value) {
+        put("location",value);
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+
+    public int getBuyIn() {
+        return getInt("buyIn");
+    }
+    public void setBuyIn(int value) {
+        put("buyIn", value);
     }
 
-    private int buyIn;
-    public int getBuyIn() {  return buyIn;}
 
-    public void setBuyIn(int buyIn) {this.buyIn = buyIn;}
+    public String getName() {
+        return getString("name");
+    }
+    public void setName(String value) {
+        put("name", value);
+    }
+
+    public String getObjectId() {
+        return getString("ObjectId");
+    }
+
+    public void setUuidString() {
+        UUID uuid = UUID.randomUUID();
+        put("uuid", uuid.toString());
+    }
+
+    public String getUuidString() {
+        return getString("uuid");
+    }
+
+    public static ParseQuery<Tournament> getQuery() {
+        return ParseQuery.getQuery(Tournament.class);
+    }
 }
