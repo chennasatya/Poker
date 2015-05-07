@@ -28,6 +28,7 @@
     <string name="title_activity_tournament">Tournament</string>
     <string name="title_activity_tournamentdetail">Tournament Details</string>
     <string name="title_activity_edittournament">Tournament Edit</string>
+    <string name="no_tournaments">No Tournaments Found</string>
 
     <!-- location -->
     <string name="title_activity_location">Location</string>

@@ -85,6 +85,7 @@ public class CreateaccountActivity extends ActionBarActivity {
                 user.put("phone", phoneValue);
                 user.put("address", addressValue);
                 user.put("name",nameValue);
+                user.put("isAdmin",false);
 
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {

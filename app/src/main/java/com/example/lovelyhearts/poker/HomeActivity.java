@@ -41,7 +41,8 @@ public class HomeActivity extends ActionBarActivity {
             }
         });
 
-        Button buttonTournament = (Button) findViewById(R.id.btn_home);
+
+        Button buttonTournament = (Button) findViewById(R.id.btn_tournament);
         buttonTournament.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, TournamentActivity.class);
@@ -49,6 +50,10 @@ public class HomeActivity extends ActionBarActivity {
             }
 
         });
+
+
+
+
 
         Button buttonRankings = (Button) findViewById(R.id.btn_rankings);
         buttonRankings.setOnClickListener(new View.OnClickListener() {

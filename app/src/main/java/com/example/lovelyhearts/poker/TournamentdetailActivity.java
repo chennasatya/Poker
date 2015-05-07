@@ -25,74 +25,64 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class TournamentdetailActivity extends ActionBarActivity {
-    List<Tournament> tournamentList ;
-    private static List<Location> locations;
-    UserManager um;
-    User mUser;
-    String username ;
+
+    DatabaseHelper db_helper = new DatabaseHelper();
+    ParseUser mUser;
+
     TextView textMsg;
     RegisteredplayersFragment rs;
+
+    private String tournamentId = "_na";
+    private Tournament tournament;
 
     boolean registered = false;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournamentdetail);
 
-        username = MainActivity.username.getText().toString();
-
-        tournamentList = new ArrayList<Tournament>();
-
-        Tournament t = new Tournament();
-        t.setLocation("Corner bar");
-        t.setDate("5/10/2015");
-        t.setTime("8 PM");
-        t.setWeek("Friday");
-        t.setBuyIn(10);
-        t.setPosition(0);
-
-        tournamentList.add(t);
-
-        Tournament t2 = new Tournament();
-        t2.setLocation("Corner bar");
-        t2.setDate("4/13/2015");
-        t2.setTime("9 PM");
-        t2.setWeek("Monday");
-        t2.setBuyIn(20);
-        t2.setPosition(1);
-        tournamentList.add(t2);
-
-
-        String locationName = getIntent().getExtras().getString("_locationId");
-        int position = getIntent().getExtras().getInt("_positionId");
-
-        for(Tournament tor: tournamentList)
-        {
-            String loc = tor.getLocation().trim();
-
-            if(tor.getLocation().equals(locationName) && tor.getPosition() == position) {
-
-                ((EditText) findViewById(R.id.editLocation)).setText(tor.getLocation());
-                ((EditText) findViewById(R.id.editTime)).setText(tor.getTime());
-                ((EditText) findViewById(R.id.editDate)).setText(tor.getDate());
-                ((EditText) findViewById(R.id.editBuyin)).setText(String.valueOf(tor.getBuyIn()));
-                break;
-            }
+        if (getIntent().hasExtra("ID")) {
+            tournamentId = getIntent().getExtras().getString("ID");
         }
+
+        if (tournamentId == "_na") {
+            tournament = new Tournament();
+            tournament.setUuidString();
+        } else {
+            ParseQuery<Tournament> query = Tournament.getQuery();
+            query.fromLocalDatastore();
+            query.whereEqualTo("uuid",tournamentId);
+            query.getFirstInBackground(new GetCallback<Tournament>() {
+                @Override
+                public void done(Tournament object, ParseException e) {
+                    if (!isFinishing()) {
+                        tournament = object;
+                        ((EditText) findViewById(R.id.editLocation)).setText(tournament.getLocation());
+                        ((EditText) findViewById(R.id.editTime)).setText(tournament.getTime());
+                        ((EditText) findViewById(R.id.editDate)).setText(tournament.getDate());
+                        ((EditText) findViewById(R.id.editBuyin)).setText(String.valueOf(tournament.getBuyIn()));
+                    }
+                }
+            });
+        }
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //getMenuInflater().inflate(R.menu.menu_tournamentdetail, menu);
-        um = new UserManager();
-        username = MainActivity.username.getText().toString();
-        mUser = um.GetUser(username);
-        boolean isAdmin = mUser.getIsAdmin();
-        if(isAdmin == true)
+
+        boolean isAdmin = mUser.getBoolean("isAdmin");
+        if(isAdmin)
         {
             getMenuInflater().inflate(R.menu.menu_tournamentdetail, menu);
         }
@@ -105,7 +95,7 @@ public class TournamentdetailActivity extends ActionBarActivity {
                 textMsg.setText("You are not registered");
                 getMenuInflater().inflate(R.menu.menu_usertournamentdetail, menu);
             }
-            else if(registered == true)
+            else if(registered)
             {
                 getMenuInflater().inflate(R.menu.menu_registertournamentdetails, menu);
                 textMsg.setText("You are registered");
