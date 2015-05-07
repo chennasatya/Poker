@@ -34,13 +34,15 @@ public class TimeFragment extends ListFragment {
         Tournament t1=new Tournament();
         t1.setDate("4/12/2015");
         t1.setTime("5pm");
-        t1.setLocation("corner bar");
         list.add(t1);
         Tournament t2=new Tournament();
         t2.setDate("4/15/2015");
         t2.setTime("6pm");
-        t2.setLocation("CrabShack");
         list.add(t2);
+        Tournament t3=new Tournament();
+        t3.setDate("4/15/2015");
+        t3.setTime("7pm");
+        list.add(t3);
 
         mInflater = LayoutInflater.from(getActivity());
         if (mAdapter == null) {
@@ -61,15 +63,16 @@ public class TimeFragment extends ListFragment {
         }
         public View getView(int position, View convertView, ViewGroup parent){
             //get tournament entry
-            Tournament tournament=getItem(position);
 
             if(convertView == null){
-       //       convertView = mInflater.inflate(R.layout.row_two_column, parent, false);
-                convertView = mInflater.inflate(R.layout.row_one_column, parent, false);
-                TextView column1=(TextView)convertView.findViewById(R.id.column1);
-       //         TextView column2=(TextView)convertView.findViewById(R.id.column2);
-                column1.setText(tournament.getTime());
-        //        column2.setText(tournament.getLocation());
+                //if the tournament position is the first
+
+                    Tournament tournament=getItem(position);
+                    convertView = mInflater.inflate(R.layout.row_two_column, parent, false);
+                    TextView column1=(TextView)convertView.findViewById(R.id.column1);
+                    TextView column2=(TextView)convertView.findViewById(R.id.column2);
+                    column1.setText(String.valueOf(tournament.getDate()));
+                    column2.setText(String.valueOf(tournament.getTime()));
             }
             return convertView;
         }
