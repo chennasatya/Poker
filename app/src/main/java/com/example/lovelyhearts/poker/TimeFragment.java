@@ -64,11 +64,12 @@ public class TimeFragment extends ListFragment {
             Tournament tournament=getItem(position);
 
             if(convertView == null){
-                convertView = mInflater.inflate(R.layout.row_two_column, parent, false);
+       //       convertView = mInflater.inflate(R.layout.row_two_column, parent, false);
+                convertView = mInflater.inflate(R.layout.row_one_column, parent, false);
                 TextView column1=(TextView)convertView.findViewById(R.id.column1);
-                TextView column2=(TextView)convertView.findViewById(R.id.column2);
+       //         TextView column2=(TextView)convertView.findViewById(R.id.column2);
                 column1.setText(tournament.getTime());
-                column2.setText(tournament.getLocation());
+        //        column2.setText(tournament.getLocation());
             }
             return convertView;
         }
