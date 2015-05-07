@@ -54,7 +54,7 @@ public class CreateaccountActivity extends ActionBarActivity {
         String emailValue = email.getText().toString();
         String phoneValue = phone.getText().toString();
         String addressValue = address.getText().toString();
-        String nameValue = address.getText().toString();
+        String nameValue = name.getText().toString();
 
         switch(id){
         case R.id.action_save:
