@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.parse.ParseUser;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,18 +26,11 @@ public class DetailaccountActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailaccount);
 
-
-
-        username = getIntent().getExtras().getString("_userName");
-
-        um = new UserManager();
-        mUser = um.GetUser(username);
-
-        ((EditText) findViewById(R.id.detailaccount_name)).setText(mUser.getName());
-        ((EditText) findViewById(R.id.detailaccount_email)).setText(mUser.getEmail());
-        ((EditText) findViewById(R.id.detailaccount_username)).setText(mUser.getName());
-        ((EditText) findViewById(R.id.detailaccount_phone)).setText(String.valueOf(mUser.getPhone()));
-        ((EditText) findViewById(R.id.detailaccount_address)).setText(String.valueOf(mUser.getAddress1() +  mUser.getAddress2()));
+        ((EditText) findViewById(R.id.detailaccount_name)).setText(ParseUser.getCurrentUser().get("name").toString());
+        ((EditText) findViewById(R.id.detailaccount_email)).setText(ParseUser.getCurrentUser().getEmail());
+        ((EditText) findViewById(R.id.detailaccount_username)).setText(ParseUser.getCurrentUser().getUsername());
+        ((EditText) findViewById(R.id.detailaccount_phone)).setText(ParseUser.getCurrentUser().get("phone").toString());
+        ((EditText) findViewById(R.id.detailaccount_address)).setText(ParseUser.getCurrentUser().get("address").toString());
     }
 
 
@@ -43,18 +38,18 @@ public class DetailaccountActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_detailaccount, menu);
-        mUser = um.GetUser(username);
-        boolean isAdmin = mUser.getIsAdmin();
-//
-//        if(isAdmin == true)
-//        {
-//            getMenuInflater().inflate(R.menu.menu_detailaccount, menu);
-//        }
-//
-//        else {
-//
-//            getMenuInflater().inflate(R.menu.normaluserdetailsaccount, menu);
-//        }
+
+        boolean isAdmin = ParseUser.getCurrentUser().getBoolean("isAdmin");
+
+        if(isAdmin == true)
+        {
+            //getMenuInflater().inflate(R.menu.menu_detailaccount, menu);
+        }
+
+        else {
+
+            //getMenuInflater().inflate(R.menu.normaluserdetailsaccount, menu);
+        }
         return true;
     }
 

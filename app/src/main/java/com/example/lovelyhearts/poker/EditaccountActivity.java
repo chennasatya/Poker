@@ -10,6 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
+import com.parse.SignUpCallback;
+
 
 public class EditaccountActivity extends ActionBarActivity {
     String username;
@@ -19,16 +25,10 @@ public class EditaccountActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editaccount);
 
-        username = getIntent().getExtras().getString("_userName");
-
-        UserManager um = new UserManager();
-        User mUser = um.GetUser(username);
-
-        ((EditText) findViewById(R.id.editaccount_name)).setText(mUser.getName());
-        ((EditText) findViewById(R.id.editaccount_email)).setText(mUser.getEmail());
-        ((EditText) findViewById(R.id.editaccount_name)).setText(mUser.getName());
-        ((EditText) findViewById(R.id.editaccount_phone)).setText(String.valueOf(mUser.getPhone()));
-        ((EditText) findViewById(R.id.editaccount_address)).setText(String.valueOf(mUser.getAddress1() +  mUser.getAddress2()));
+        ((EditText) findViewById(R.id.editaccount_name)).setText(ParseUser.getCurrentUser().get("name").toString());
+        ((EditText) findViewById(R.id.editaccount_email)).setText(ParseUser.getCurrentUser().getEmail());
+        ((EditText) findViewById(R.id.editaccount_phone)).setText(ParseUser.getCurrentUser().get("phone").toString());
+        ((EditText) findViewById(R.id.editaccount_address)).setText(ParseUser.getCurrentUser().get("address").toString());
 
     }
 
@@ -70,12 +70,27 @@ public class EditaccountActivity extends ActionBarActivity {
 
     private void SaveChanges()
     {
-        User mUser = new User();
-        mUser.setName(((TextView) findViewById(R.id.editaccount_name)).getText().toString());
-        mUser.setEmail(((TextView) findViewById(R.id.editaccount_email)).getText().toString());
-        mUser.setPhone(((TextView) findViewById(R.id.editaccount_phone)).getText().toString());
-        mUser.setAddress1(((TextView) findViewById(R.id.editaccount_address)).getText().toString());
+        ParseUser user = ParseUser.getCurrentUser();
+        user.put("name", ((TextView) findViewById(R.id.editaccount_name)).getText().toString());
+        user.setEmail(((TextView) findViewById(R.id.editaccount_email)).getText().toString());
+        user.put("phone", ((TextView) findViewById(R.id.editaccount_phone)).getText().toString());
+        user.put("address", ((TextView) findViewById(R.id.editaccount_address)).getText().toString());
 
+        user.saveInBackground(new SaveCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    // Show a simple Toast message upon successful registration
+                    Toast.makeText(getApplicationContext(),
+                            "Successfully Saved",
+                            Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Save Error:" + e.toString(), Toast.LENGTH_LONG)
+                            .show();
+                }
+            }
+        });
 
     }
 

@@ -13,20 +13,6 @@ import java.util.UUID;
 
 @ParseClassName("Tournament")
 public class Tournament extends ParseObject {
-//    private String date;
-//    private String time;
-//    private String location = "TBD";
-//    private String week;
-//    private String maxPlayers;
-//    private int buyIn;
-//    private String name;
-//    private String ObjectId;
-
-    public Tournament(){
-        //Default Constructor
-        //Must have blank constructor to work with Parse
-        //Do not modify any fields in this constructor
-    }
 
     public String getWeek() {
         return getString("week");

@@ -19,9 +19,13 @@
 
     <TextView
         android:id="@+id/lblSignIn"
-        android:text="@string/SignIn"
+        android:text="Poker Planner"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btn_SignIn"
+        android:layout_alignParentStart="true"
+        android:gravity="center_vertical|center_horizontal|top"
+        android:textStyle="bold" />
 
 
     <EditText
@@ -72,5 +76,23 @@
         android:id="@+id/btn_home"
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/btn_SignIn" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:text="Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvUserName"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="37dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:text="Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvUserName"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="21dp" />
 
 </RelativeLayout>
