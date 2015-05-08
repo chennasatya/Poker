@@ -69,13 +69,13 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="75dp"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home (for test use)"
-        android:id="@+id/btn_home"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/btn_SignIn" />
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Home (for test use)"-->
+        <!--android:id="@+id/btn_home"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignEnd="@+id/btn_SignIn" />-->
 
     <TextView
         android:id="@+id/textView"

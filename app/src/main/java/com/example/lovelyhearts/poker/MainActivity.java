@@ -145,14 +145,14 @@ public class MainActivity extends ActionBarActivity {
 
 
         //----------------------home button (for test)-----------------
-        Button buttonHome = (Button) findViewById(R.id.btn_home);
-        buttonHome.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-
-        });
+//        Button buttonHome = (Button) findViewById(R.id.btn_home);
+//        buttonHome.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+//                startActivity(intent);
+//            }
+//
+//        });
 
         /* RTT this keeps crashing and I can't get it to work ARRRRRRGGGGGHHHH
         ParseObject.registerSubclass(Location.class);
