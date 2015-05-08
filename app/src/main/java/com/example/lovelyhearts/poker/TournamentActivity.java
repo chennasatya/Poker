@@ -16,6 +16,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.internal.widget.AdapterViewCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -122,7 +123,23 @@ public class TournamentActivity extends ActionBarActivity {
         TextView tournamentDateTime;
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        Intent intent=null;
 
+
+        switch(id){
+            case R.id.action_addtournament:
+                intent = new Intent(this,EditTournament.class);
+                intent.putExtra("_addNew",true);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
 
 

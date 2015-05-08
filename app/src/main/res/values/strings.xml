@@ -66,5 +66,7 @@
     <string name="title_activity_edit_tournament">EditTournament</string>
     <string name="title_activity_edit_location">EditLocation</string>
     <string name="title_activity_location_details">LocationDetails</string>
+    <string name="AddTournament">AddTournament</string>
+    <string name="title_AddTournament">Add Tournament</string>
 
 </resources>

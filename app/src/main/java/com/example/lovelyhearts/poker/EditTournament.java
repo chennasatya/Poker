@@ -11,21 +11,29 @@ import android.widget.EditText;
 public class EditTournament extends ActionBarActivity {
 
     String tournamentLocation;
+    Boolean bAddNew = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_tournament);
 
-        tournamentLocation = getIntent().getExtras().getString("_locationName");
-        TournamentManager um = new TournamentManager();
-        Tournament mTournament = um.GetTournament(tournamentLocation);
+        bAddNew  = getIntent().getExtras().getBoolean("_addNew");
 
-        ((EditText) findViewById(R.id.et_tournament_locationNameText)).setText(mTournament.getLocation());
-        ((EditText) findViewById(R.id.et_locationDate)).setText(mTournament.getDate());
-        ((EditText) findViewById(R.id.et_Time)).setText(mTournament.getTime());
-        ((EditText) findViewById(R.id.et_MaxPlayer)).setText(String.valueOf(mTournament.getMaxPlayers()));
-        ((EditText) findViewById(R.id.et_BuyIn)).setText(String.valueOf(mTournament.getBuyIn()));
+        if(bAddNew) {
+            //this.getActionBar().setTitle(getString(R.string.title_AddTournament));
+        }
+        else {
+            tournamentLocation = getIntent().getExtras().getString("_locationName");
+            TournamentManager um = new TournamentManager();
+            Tournament mTournament = um.GetTournament(tournamentLocation);
+
+            ((EditText) findViewById(R.id.et_tournament_locationNameText)).setText(mTournament.getLocation());
+            ((EditText) findViewById(R.id.et_locationDate)).setText(mTournament.getDate());
+            ((EditText) findViewById(R.id.et_Time)).setText(mTournament.getTime());
+            ((EditText) findViewById(R.id.et_MaxPlayer)).setText(String.valueOf(mTournament.getMaxPlayers()));
+            ((EditText) findViewById(R.id.et_BuyIn)).setText(String.valueOf(mTournament.getBuyIn()));
+        }
     }
 
 
