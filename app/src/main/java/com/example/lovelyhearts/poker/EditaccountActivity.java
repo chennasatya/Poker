@@ -1,6 +1,7 @@
 package com.example.lovelyhearts.poker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.DeleteCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -52,13 +54,16 @@ public class EditaccountActivity extends ActionBarActivity {
                 break;
             case R.id.action_save:
                 SaveChanges();
-                ShowToast("Changes Saved");
                 finish();
+                // Navigate back to the home screen
+                Intent homeIntent = new Intent(EditaccountActivity.this, HomeActivity.class);
+                NavUtils.navigateUpTo(EditaccountActivity.this, homeIntent);
                 break;
             case R.id.action_delete:
-                //DeleteContact();
-                ShowToast("Contact Deleted");
-                NavUtils.navigateUpFromSameTask(this);
+                DeleteContact();
+                // Navigate back to the Main Screen and log out
+                Intent intent = new Intent(EditaccountActivity.this, MainActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -80,18 +85,27 @@ public class EditaccountActivity extends ActionBarActivity {
             public void done(ParseException e) {
                 if (e == null) {
                     // Show a simple Toast message upon successful registration
-                    Toast.makeText(getApplicationContext(),
-                            "Successfully Saved",
-                            Toast.LENGTH_LONG).show();
-                    finish();
+                    ShowToast("Changes Saved");
                 } else {
-                    Toast.makeText(getApplicationContext(),
-                            "Save Error:" + e.toString(), Toast.LENGTH_LONG)
-                            .show();
+                    ShowToast("Save Error:" + e.toString());
                 }
             }
         });
 
+    }
+
+    private void DeleteContact() {
+        ParseUser.getCurrentUser().deleteInBackground(new DeleteCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    // Show a simple Toast message upon successful registration
+                    ShowToast("Delete successful");
+                } else {
+                    ShowToast("Delete Failed: " + e.toString());
+                }
+            }
+        });
     }
 
     void ShowToast(CharSequence text)
