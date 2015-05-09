@@ -49,6 +49,7 @@ public class RegisteredplayersFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+
     }
     //---------------inner class--------------------------------------------
     public class ListViewAdapter extends ArrayAdapter<User> {
