@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -89,6 +90,54 @@ public class DatabaseHelper {
         });
     }
 
+    public boolean isLoggedIn() {
+        try {
+            ParseUser mUser = ParseUser.getCurrentUser();
+            return true;
+        } catch (NullPointerException npe) {
+            return false;
+        }
+    }
+
+    public Tournament getTournament(String tId) {
+        ParseQuery<Tournament> query = ParseQuery.getQuery(Tournament.class);
+        if (query.hasCachedResult()) {
+            query.fromLocalDatastore();
+        }
+
+        try {
+            return query.get(tId);
+        } catch (ParseException pe) {
+            return new Tournament();
+        }
+
+    }
+
+    public ParseObject getObject(String objClass, String objId) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(objClass);
+        if (query.hasCachedResult()) {
+            query.fromLocalDatastore();
+        }
+
+        try {
+            return query.get(objId);
+        } catch (ParseException pe) {
+            return null;
+        }
+        /*
+        query.getInBackground(objId, new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    // object will be your value from the local datastore
+
+                } else {
+                    // object is not in local datastore, so retrieve it from cloud
+
+                }
+            }
+        });
+        */
+    }
 
 }
 
