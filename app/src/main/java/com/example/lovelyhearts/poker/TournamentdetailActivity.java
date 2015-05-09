@@ -25,8 +25,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -37,7 +39,7 @@ import java.util.List;
 public class TournamentdetailActivity extends ActionBarActivity {
 
     DatabaseHelper db_helper = new DatabaseHelper();
-    ParseUser mUser;
+    ParseUser mUser = ParseUser.getCurrentUser();
 
     TextView textMsg;
     RegisteredplayersFragment rs;
@@ -54,26 +56,30 @@ public class TournamentdetailActivity extends ActionBarActivity {
             tournamentId = getIntent().getExtras().getString("ID");
         }
 
-        if (tournamentId == "_na") {
-            tournament = new Tournament();
-            tournament.setUuidString();
-        } else {
-            ParseQuery<Tournament> query = Tournament.getQuery();
-            query.fromLocalDatastore();
-            query.whereEqualTo("uuid",tournamentId);
-            query.getFirstInBackground(new GetCallback<Tournament>() {
-                @Override
-                public void done(Tournament object, ParseException e) {
-                    if (!isFinishing()) {
-                        tournament = object;
-                        ((EditText) findViewById(R.id.editLocation)).setText(tournament.getLocation());
-                        ((EditText) findViewById(R.id.editTime)).setText(tournament.getTime());
-                        ((EditText) findViewById(R.id.editDate)).setText(tournament.getDate());
-                        ((EditText) findViewById(R.id.editBuyin)).setText(String.valueOf(tournament.getBuyIn()));
-                    }
-                }
-            });
+        System.out.println("TOURNAMENT ID IS: " + tournamentId);
+        ParseQuery<Tournament> query = Tournament.getQuery();
+        //query.whereEqualTo("ObjectId",tournamentId);
+
+        //need the result before displaying page, so don't run query in background
+        try {
+            ParseObject t = query.get(tournamentId);
+            ((EditText) findViewById(R.id.editLocation)).setText(t.getString("location"));
+            ((EditText) findViewById(R.id.editTime)).setText(t.getString("time"));
+            ((EditText) findViewById(R.id.editDate)).setText(t.getString("date"));
+            ((EditText) findViewById(R.id.editBuyin)).setText(String.valueOf(t.getInt("buyIn")));
+
+            // this would really be total possible minus number of already assigned players
+            // but that has not been implemented yet :)
+            int availSeats = t.getInt("seats") * t.getInt("tableNo");
+            ((EditText) findViewById(R.id.editSeatsAvail)).setText(String.valueOf(availSeats));
+        } catch (ParseException e) {
+            // tournament not found - handle this
+            Toast.makeText(getApplicationContext(),
+                    "ERROR: Tournament with ID "+tournamentId+" could not be found.",
+                    Toast.LENGTH_LONG).show();
+            finish();
         }
+
 
     }
 

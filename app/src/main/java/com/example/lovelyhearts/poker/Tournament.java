@@ -70,6 +70,12 @@ public class Tournament extends ParseObject {
         return getString("ObjectId");
     }
 
+    public int getSeats() { return getInt("seats");}
+    public void setSeats(int value) { put("seats",value);}
+
+    public int getTableNo() { return getInt("tableNo");}
+    public void setTableNo(int value) { put("tableNo",value);}
+
     public void setUuidString() {
         UUID uuid = UUID.randomUUID();
         put("uuid", uuid.toString());

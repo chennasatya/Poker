@@ -127,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="12"
-        android:id="@+id/editText"
+        android:id="@+id/editSeatsAvail"
         android:editable="false"
         android:enabled="true"
         android:layout_marginLeft="0dp"
