@@ -20,10 +20,10 @@
         android:ems="12"
         android:id="@+id/et_tournament_locationNameText"
         android:editable="true"
-        android:layout_margin="0dp"
-        android:layout_alignRight="@+id/lbl_tournament_locationname"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/et_locationDate" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,9 +41,9 @@
         android:ems="12"
         android:id="@+id/et_locationDate"
         android:editable="true"
-        android:layout_alignRight="@+id/lbl_location_phone"
+        android:layout_alignBottom="@+id/lbl_tournament_location_phone"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="37dp"/>
+        android:inputType="datetime" />
 
 
     <TextView
@@ -62,19 +62,19 @@
         android:ems="12"
         android:id="@+id/et_Time"
         android:editable="true"
-        android:layout_alignRight="@+id/lbl_location_Address"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="77dp"/>
+        android:layout_alignBottom="@+id/lbl_location_Address"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MaxPlayers:"
+        android:text="Max Players:"
         android:textSize="20dp"
         android:id="@+id/lbl_location_City"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/et_Time"
-        />
+        android:layout_toStartOf="@+id/et_BuyIn"
+        android:layout_alignEnd="@+id/lbl_tournament_locationname" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -82,9 +82,9 @@
         android:ems="12"
         android:id="@+id/et_MaxPlayer"
         android:editable="true"
-        android:layout_alignRight="@+id/lbl_location_City"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="117dp"/>
+        android:layout_alignTop="@+id/lbl_location_City"
+        android:layout_alignStart="@+id/et_BuyIn"
+        android:inputType="number" />
 
 
     <TextView
@@ -103,7 +103,7 @@
         android:ems="12"
         android:id="@+id/et_BuyIn"
         android:editable="true"
-        android:layout_alignRight="@+id/lbl_location_State"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="157dp"/>
+        android:layout_below="@+id/lbl_location_City"
+        android:layout_alignStart="@+id/et_Time"
+        android:inputType="number" />
 </RelativeLayout>
