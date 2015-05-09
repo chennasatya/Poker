@@ -4,8 +4,14 @@
     tools:context="com.example.lovelyhearts.poker.TournamentActivity">
 
     <item
-        android:id="@+id/action_addtournament"
-        android:title="@string/AddTournament"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+    android:id="@+id/action_addtournament"
+    android:title="@string/AddTournament"
+    android:orderInCategory="100"
+    app:showAsAction="never" />
+
+    <!--<item-->
+        <!--android:id="@+id/action_playtournament"-->
+        <!--android:title="@string/PlayTournament"-->
+        <!--android:orderInCategory="100"-->
+        <!--app:showAsAction="never" />-->
 </menu>

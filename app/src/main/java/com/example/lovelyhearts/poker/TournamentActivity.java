@@ -136,6 +136,13 @@ public class TournamentActivity extends ActionBarActivity {
                 startActivity(intent);
                 return true;
 
+//            case R.id.action_playtournament:
+//                intent = new Intent(this,PlayActivity.class);
+//                intent.putExtra("_showPlay",true);
+//                intent.putExtra("_tournamentID", "yLR7y5RD8k");
+//                startActivity(intent);
+//                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

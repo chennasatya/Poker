@@ -127,6 +127,13 @@ public class TournamentdetailActivity extends ActionBarActivity {
                 registered = true;
                 invalidateOptionsMenu();
 
+            case R.id.action_playtournament:
+                intent = new Intent(this,PlayActivity.class);
+                intent.putExtra("_showPlay",true);
+                intent.putExtra("_tournamentID", tournamentId);
+                startActivity(intent);
+                break;
+
 //
 //
 //                 Fragment fm =  getFragmentManager().findFragmentById(R.id.ttl_registeredplayers);
@@ -136,7 +143,7 @@ public class TournamentdetailActivity extends ActionBarActivity {
 //                t1.setName(username);
 //                l.add(t1);
 
-                break;
+
 
             case R.id.action_unregister:
                 textMsg.setText("You are not registered");

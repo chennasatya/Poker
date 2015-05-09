@@ -32,6 +32,7 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(Seat.class);
         ParseObject.registerSubclass(Table.class);
         ParseObject.registerSubclass(Tournament.class);
+        ParseObject.registerSubclass(TournamentTable.class);
 
         // Add your initialization code here
         Parse.initialize(this, "CMGQQp6k1D8jVqr39taB6iEVwLSV39VNJq6SmEJe", "uSZcKaAIdtdQ8xxbiTMmRZTDiXiwT5FnSiOT6bLt");
