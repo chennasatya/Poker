@@ -20,14 +20,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+
+import java.util.List;
 
 
 public class TournamentActivity extends ActionBarActivity {
@@ -39,30 +43,30 @@ public class TournamentActivity extends ActionBarActivity {
 
     private ListView tournamentListView;
     private LinearLayout noTournamentView;
-
+    private LinearLayout searchTournamentView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament);
 
-        // set up the views
+        // set up views for this layout
         tournamentListView = (ListView) findViewById(R.id.tournament_list_view);
-        noTournamentView = (LinearLayout) findViewById(R.id.no_tournament_view);
-        tournamentListView.setEmptyView(noTournamentView);
+        //noTournamentView = (LinearLayout) findViewById(R.id.no_tournament_view);
+        //searchTournamentView = (LinearLayout) findViewById(R.id.search_tournament_view);
 
         // set up Parse query for adapter
-        /*
+
         ParseQueryAdapter.QueryFactory<Tournament> factory = new ParseQueryAdapter.QueryFactory<Tournament>() {
             public ParseQuery<Tournament> create() {
                 ParseQuery<Tournament> query = Tournament.getQuery();
                 query.orderByAscending("date");
-                //query.fromLocalDatastore();       //this should be included once DatabaseHelper func is implemented
+                //query.fromLocalDatastore();       //this really should be included for persistence
                 return query;
             }
         };
-        */
-        ParseQueryAdapter<Tournament> adapter = new ParseQueryAdapter<Tournament>(this, "Tournament");
-        adapter.setTextKey("name");
+
+        //ParseQueryAdapter<Tournament> adapter = new ParseQueryAdapter(this, "Tournament");
+        //adapter.setTextKey("name");
 
         // set up adapter
         //inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -71,7 +75,32 @@ public class TournamentActivity extends ActionBarActivity {
         // attach query adapter to ListView
         //ListView tournamentListView = (ListView) findViewById(R.id.tournament_list_view);
         //tournamentListView.setAdapter(tournamentListAdapter);
-        tournamentListView.setAdapter(adapter);
+
+        /*
+        ParseQuery<Tournament> query = Tournament.getQuery();
+
+        try {
+            List<Tournament> results = query.find();
+            ArrayAdapter<Tournament> adapter = new ArrayAdapter<Tournament>(this,android.R.layout.activity_list_item,results);
+            tournamentListView.setAdapter(adapter);
+        } catch (ParseException e) {
+
+        }
+        */
+
+        //tournamentListView.setEmptyView(searchTournamentView);
+        //ParseQuery<Tournament> query = Tournament.getQuery();
+
+        /*try {
+            query.find();
+            if (query.count() == 0) {
+                tournamentListView.setEmptyView(noTournamentView);
+            }
+        } catch (ParseException e) {
+            //do something
+        }
+        */
+        tournamentListView.setAdapter(new TournamentListAdapter(TournamentActivity.this, factory));
 
         tournamentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -100,32 +129,21 @@ public class TournamentActivity extends ActionBarActivity {
             super(context, queryFactory);
         }
 
-        @Override
-        public View getItemView(Tournament tournament, View view, ViewGroup parent) {
-           // ViewHolder holder;
+        public View getItemView(int position, View tournamentView, ViewGroup parent) {
+            View view;
 
-            if (view == null) {
-                view = View.inflate(getContext(), R.layout.row_two_column, null);
-                //view = getLayoutInflater().inflate(R.layout.row_two_column, parent, false);
-                //holder = new ViewHolder();
-
-                //holder.tournamentName = (TextView)view.findViewById(R.id.column1);
-                //holder.tournamentDateTime=(TextView)view.findViewById(R.id.column2);
-
-                //view.setTag(holder);
-            //} else {
-            //    holder = (ViewHolder) view.getTag();
+            //null means android hasn't found anything to be reused, need to create new
+            if (tournamentView == null) {
+                //get layoutinflator - uses id to pull layout out of xml and inflate into object
+                //attach the object to the parent
+                view = getLayoutInflater().inflate(R.layout.activity_tournament, parent, false);
+            } else {
+                view = tournamentView;
             }
-            //TextView tournamentName = holder.tournamentName;
-            //tournamentName.setText(tournament.getName());
-            //TextView tournamentDateTime = holder.tournamentDateTime;
-            //tournamentDateTime.setText(tournament.getDate() + " " + tournament.getTime());
-
-            // use ParseQueryAdapter's getItemView to populate the main TextView
-            super.getItemView(tournament, view, parent);
 
             return view;
         }
+
     }
 
     private static class ViewHolder {
@@ -150,6 +168,44 @@ public class TournamentActivity extends ActionBarActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    /*
+    //easier to make adapter an inner class - common to put this in activity class
+    class TournamentListAdapter extends ArrayAdapter<Tournament> {
+
+        public TournamentListAdapter(Context context, int resource, List<Tournament> objects) {
+            super(context, resource, objects);
+        }
+
+@Override
+        public View getView(Tournament tournament, View view, ViewGroup parent) {
+           // ViewHolder holder;
+
+            if (view == null) {
+                view = View.inflate(getContext(), R.layout.row_two_column, null);
+                //view = getLayoutInflater().inflate(R.layout.row_two_column, parent, false);
+                //holder = new ViewHolder();
+
+                //holder.tournamentName = (TextView)view.findViewById(R.id.column1);
+                //holder.tournamentDateTime=(TextView)view.findViewById(R.id.column2);
+
+                //view.setTag(holder);
+            //} else {
+            //    holder = (ViewHolder) view.getTag();
+            }
+            //TextView tournamentName = holder.tournamentName;
+            //tournamentName.setText(tournament.getName());
+            //TextView tournamentDateTime = holder.tournamentDateTime;
+            //tournamentDateTime.setText(tournament.getDate() + " " + tournament.getTime());
+
+            // use ParseQueryAdapter's getItemView to populate the main TextView
+            super.getItemView(tournament, view, parent);
+
+            return view;
+        }
+
+    }
+    */
 }
 
 

@@ -8,12 +8,12 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.lovelyhearts.poker.TournamentdetailActivity">
 
-    <fragment
+    <!--fragment
         android:id="@+id/list_registedplayers"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/ttl_registeredplayers"
-        class="com.example.lovelyhearts.poker.RegisteredplayersFragment" />
+        class="com.example.lovelyhearts.poker.RegisteredplayersFragment" /-->
 
     <TextView
         android:layout_width="wrap_content"
